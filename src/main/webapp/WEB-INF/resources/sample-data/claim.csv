@@ -1,0 +1,9 @@
+key,code,instantiationMoment,heading,description,departament,email,link,draftMode
+claim-01,C-0001,2022/01/1 12:00,Heading-01,Description-01,Departament-01,claim1@gmail.com,https://www.google.com/claim-01,false
+claim-02,C-0002,2022/02/2 23:59,Heading-02,Description-02,Departament-02,null,https://www.google.com/claim-02,false
+claim-03,C-0003,2022/03/3 00:00,Heading-03,Description-03,Departament-03,claim3@gmail.com,null,false
+claim-04,C-0004,2022/04/4 2:00,Heading-04,Description-04,Departament-04,null,null,false
+claim-05,C-0005,2022/05/5 14:00,Heading-05,Description-05,Departament-05,claim5@gmail.com,null,false
+claim-06,C-0006,2022/06/6 17:00,Heading-06,Description-06,Departament-06,claim6@gmail.com,null,false
+claim-07,C-0007,2022/07/29 23:59,Heading-07,Description-07,Departament-07,claim7@gmail.com,https://www.google.com/claim-07,false
+claim-08,C-0008,2020/02/29 12:00,Заголовок-08,Описание-08,Департамент-08,претензия8@gmail.com,null,false
