@@ -1,0 +1,16 @@
+key,key:code-audit,code,start-date,end-date,mark,link
+audit-record-01,code-audit-01,AU-1234-567,2019/08/25 22:15,2019/08/25 23:15,A,null
+audit-record-02,code-audit-01,AU-9876-432,2020/02/29 23:59,2020/03/01 01:15,A,null
+audit-record-03,code-audit-01,AU-0000-001,2019/09/11 00:00,2019/09/11 03:00,A,null
+audit-record-04,code-audit-01,AU-5555-999,2020/02/29 22:59,2020/02/29 23:59,A,null
+audit-record-05,code-audit-01,AU-1234-789,2019/12/31 23:00,2020/01/01 00:00,A,null
+audit-record-06,code-audit-01,AU-9999-000,2019/03/29 01:15,2019/03/29 03:15,A,null
+audit-record-07,code-audit-04,AU-9999-001,2019/03/29 01:16,2019/03/29 04:16,A,null
+audit-record-08,code-audit-01,AU-4567-123,2019/04/25 20:15,2019/04/25 22:15,B,null
+audit-record-09,code-audit-01,AU-4567-124,2019/04/25 20:16,2019/04/25 22:16,C,null
+audit-record-10,code-audit-01,AU-4567-125,2019/04/25 20:17,2019/04/25 22:17,F,null
+audit-record-11,code-audit-01,AU-4567-126,2019/04/25 20:18,2019/04/25 22:18,A_PLUS,null
+audit-record-12,code-audit-01,AU-4567-127,2019/04/25 20:19,2019/04/25 22:19,F_MINUS,null
+audit-record-13,code-audit-01,AU-4567-128,2019/04/25 20:20,2019/04/25 22:20,A,http://www.example.com
+audit-record-14,code-audit-01,AU-4567-129,2019/04/25 20:21,2019/04/25 22:21,A,https://ev.us.es
+audit-record-15,code-audit-02,AU-4567-130,2019/04/25 20:22,2019/04/25 22:22,A,null
