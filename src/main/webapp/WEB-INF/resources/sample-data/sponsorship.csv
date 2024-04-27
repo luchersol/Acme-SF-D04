@@ -1,0 +1,21 @@
+key,code,moment,start-date,end-date,amount,type,email,link,key:project
+sponsorship-01,ABC-001,2021/01/15 05:20,2023/06/15 03:45,null,"EUR 15,000.23",FINANCIAL,email1@acme.com,http://example.com/1,project-01
+sponsorship-02,DEF-002,2021/02/20 09:50,2024/03/20 08:30,null,"USD 23,190",INKIND,email2@acme.com,http://example.com/2,project-02
+sponsorship-03,GHI-003,2021/05/25 12:15,2023/11/05 11:10,2023/12/12 06:15,"USD 31,930",FINANCIAL,email3@acme.com,http://example.com/3,project-01
+sponsorship-04,JKL-004,2021/06/10 17:45,2024/08/10 15:25,null,"EUR 10,000.23",INKIND,email4@acme.com,http://example.com/4,project-04
+sponsorship-05,MNO-005,2021/03/25 11:30,2023/04/25 07:20,null,"USD 30,930",FINANCIAL,email5@acme.com,http://example.com/5,project-04
+sponsorship-06,PQR-006,2021/04/18 06:55,2024/05/18 04:40,2023/08/17 08:30,"USD 30,930",INKIND,email6@acme.com,http://example.com/6,project-03
+sponsorship-07,STU-007,2021/09/20 01:25,2023/09/30 02:35,null,"EUR 25,000.03",FINANCIAL,email7@acme.com,http://example.com/7,project-03
+sponsorship-08,VWX-008,2021/12/12 14:40,2024/07/12 10:50,2024/09/12 06:15,"USD 30,930",INKIND,email8@acme.com,http://example.com/8,project-03
+sponsorship-09,YZA-009,2021/01/14 09:20,2023/02/14 13:55,null,"BGP 2,000,000",FINANCIAL,email9@acme.com,http://example.com/9,project-03
+sponsorship-10,BCD-010,2021/10/28 10:05,2024/11/28 06:30,null,"EUR 40,000.20",INKIND,email10@acme.com,http://example.com/10,project-02
+sponsorship-11,CDE-011,2021/08/04 18:15,2023/08/08 12:25,2023/09/12 08:00,"BGP 3,000.10",FINANCIAL,email11@acme.com,http://example.com/11,project-01
+sponsorship-12,DEF-012,2021/01/23 03:40,2024/01/23 07:15,null,"BGP 3,000.10",INKIND,email12@acme.com,http://example.com/12,project-01
+sponsorship-13,EFG-013,2021/06/02 13:20,2023/10/02 17:30,2023/11/03 12:00,"BGP 3,000.10",FINANCIAL,email13@acme.com,http://example.com/13,project-02
+sponsorship-14,FGH-014,2021/01/10 08:25,2024/04/10 12:00,null,"BGP 3,000.10",INKIND,email14@acme.com,http://example.com/14,project-02
+sponsorship-15,GHI-015,2021/01/15 17:10,2023/03/15 09:50,2022/11/15 10:35,"EUR 1,000",FINANCIAL,email15@acme.com,http://example.com/15,project-04
+sponsorship-16,HIJ-016,2021/08/07 16:35,2024/12/07 11:20,null,"USD 2,000,000",INKIND,email16@acme.com,http://example.com/16,project-02
+sponsorship-17,IJK-017,2021/07/20 07:45,2023/07/23 03:55,2023/10/24 12:40,"BGP 2,000,000",FINANCIAL,email17@acme.com,http://example.com/17,project-02
+sponsorship-18,JKL-018,2021/01/05 12:30,2024/02/05 08:10,null,"USD 1,000",INKIND,email18@acme.com,http://example.com/18,project-02
+sponsorship-19,KLM-019,2021/09/29 05:55,2023/11/29 13:45,null,"EUR 2,000,000",FINANCIAL,email19@acme.com,http://example.com/19,project-04
+sponsorship-20,LMN-020,2021/02/23 19:20,2024/06/23 15:05,2023/08/20 17:20,"BGP 1,000",INKIND,email20@acme.com,http://example.com/20,project-04
