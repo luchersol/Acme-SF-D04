@@ -1,0 +1,14 @@
+
+auditor.dashboard.form.title = Auditor dashboard
+auditor.auditor-form.form.title = Published Code Audits stats
+
+auditor.dashboard.form.label.totalStaticCodeAudits	= Total Static code audits
+auditor.dashboard.form.label.totalDynamicCodeAudits	= Total Dynamic code audits
+auditor.dashboard.form.label.averageAuditRecordsInCodeAudits = Average audit records in code audits
+auditor.dashboard.form.label.deviationAuditRecordsInCodeAudits = Standard deviation of audit records in code audits
+auditor.dashboard.form.label.minimumAuditRecordsInCodeAudits = Minimum audit records in code audits
+auditor.dashboard.form.label.maximumAuditRecordsInCodeAudits = Maximum audit records in code audits
+auditor.dashboard.form.label.averagePeriodOfAuditRecordsInCodeAudits = Average period of audit records (in hours)
+auditor.dashboard.form.label.deviationPeriodOfAuditRecordsInCodeAudits = Standard deviation in period of audit records (in hours)
+auditor.dashboard.form.label.minimumPeriodOfAuditRecordsInCodeAudits = Minimum period of audit records (in hours)
+auditor.dashboard.form.label.maximumPeriodOfAuditRecordsInCodeAudits = Maximum period of audit records (in hours)

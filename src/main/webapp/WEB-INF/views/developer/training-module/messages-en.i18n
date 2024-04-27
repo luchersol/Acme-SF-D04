@@ -1,0 +1,45 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-module.form.title = Training form
+developer.training-module.list.title = Listing of my trainings
+
+developer.training-module.form.label.code = Code:
+developer.training-module.form.label.details = Details:
+developer.training-module.form.label.creationMoment = Creation Moment:
+developer.training-module.form.label.difficultyLevel = Difficulty Level:
+developer.training-module.form.label.updateMoment = Update Moment:
+developer.training-module.form.label.link = Link:
+developer.training-module.form.label.estimatedTotalTime = Estimated Total Time:
+developer.training-module.form.button.create = Create
+
+developer.training-module.list.label.code = Code
+developer.training-module.list.label.details = Details
+developer.training-module.list.label.creationMoment = Creation Moment
+developer.training-module.list.label.difficultyLevel = Difficulty Level
+developer.training-module.list.label.updateMoment = Update Moment
+developer.training-module.list.label.link = Link
+developer.training-module.list.label.estimatedTotalTime = Estimated Total Time
+developer.training-module.form.label.project = Proyects:
+
+developer.training-module.form.placeholder.estimatedTotalTime = 0.00
+
+developer.training-module.form.error.duplicated = This reference is not available
+developer.training-module.form.error.publish = You cannot publish without associated sessions
+developer.training-module.form.error.invalid-updateMoment = It must be after the creation moment
+developer.training-module.form.error.allpublish = Associated sessions not publish
+
+
+developer.training-module.form.button.activities = Training Sessions
+developer.training-module.form.button.update = Update
+developer.training-module.form.button.delete = Delete
+developer.training-module.form.button.publish = Publish
+developer.training-module.list.button.create = Create
+developer.training-module.form.error.duplicated = This reference is taken
