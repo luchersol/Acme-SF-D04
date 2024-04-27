@@ -1,0 +1,4 @@
+key,code,time-start,time-end,location,instructor,contact-email,link,key:training-module
+training-session-001,TS-A01-001,01/01/2025 10:00:00,29/07/2020 23:59:00,Sevilla,Instructor 1,instructor1@ejemplo.com,http://ejemplo.com/sesion1,training-module-001
+training-session-002,TS-B02-002,01/02/2025 10:00:00,30/07/2020 00:00:00,Madrid,Instructor 2,instructor2@ejemplo.com,http://ejemplo.com/sesion2,training-module-002
+training-session-003,TS-C03-003,01/03/2025 10:00:00,18/07/2020 12:30:03,Barcelona,Instructor 3,instructor3@ejemplo.com,www.ejemplo.com,training-module-003

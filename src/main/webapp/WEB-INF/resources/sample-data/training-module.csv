@@ -1,0 +1,8 @@
+key,code,creation-moment,details,difficulty-level,update-moment,link,estimated-total-time
+training-module-001,A01-001,12/07/2020 23:59:00,Detalles del módulo 1,BASIC,29/03/2020 10:00:00,http://ejemplo.com/modulo1,10
+training-module-002,B02-002,08/07/2020 23:59:00,Detalles del módulo 2,INTERMEDIATE,01/03/2024 10:00:00,ev.us.es,20
+training-module-003,C03-003,12/03/2020 00:00:00,a,ADVANCED,01/04/2024 10:00:00,http://ejemplo.com/modulo3,30
+training-module-004,D04-004,29/02/2020 10:00:00,<script>alert(,LOW,01/05/2024 10:00:00,http://ejemplo.com/modulo4,40
+training-module-005,E05-005,01/05/2021 12:00:00,Detalles del módulo 5,ADVANCED,01/06/2024 10:00:00,http://ejemplo.com/modulo5,50
+training-module-006,F06-006,31/07/2020 23:59:00,Detalles del módulo 6,ADVANCED,01/07/2024 10:00:00,http://ejemplo.com/modulo6,60
+training-module-007,INVALID,01/01/2020 13:00:00,Detalles del módulo 7,BASIC,01/02/2024 10:00:00,INVALID,INVALID
