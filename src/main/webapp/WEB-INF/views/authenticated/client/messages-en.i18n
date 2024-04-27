@@ -1,0 +1,12 @@
+
+authenticated.consumer.form.title = Client form
+
+authenticated.client.form.button.create = Register
+authenticated.client.form.button.update = Update
+
+
+authenticated.client.form.label.identification = Identification
+authenticated.client.form.label.companyName = Company Name 
+authenticated.client.form.label.type = Type of client
+authenticated.client.form.label.email = Email
+authenticated.client.form.label.link = Link (Optional)
