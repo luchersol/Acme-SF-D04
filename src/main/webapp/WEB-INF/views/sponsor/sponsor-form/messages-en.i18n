@@ -1,0 +1,24 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsor-form.form.title = Sponsor form
+
+sponsor.sponsor-form.form.title.general-indicators = General indicators
+
+sponsor.sponsor-form.form.label.total-invoices-with-tax-less-than-or-equal-to-21 = Total number of invoices with a tax less than or equal to 21.00%
+sponsor.sponsor-form.form.label.total-sponsorship-with-link = Total number of sponsorships with a link
+sponsor.sponsor-form.form.label.average-amount-of-the-sponsorships = Average amount of the sponsorships
+sponsor.sponsor-form.form.label.deviation-amount-of-the-sponsorships = Deviation amount of the sponsorships
+sponsor.sponsor-form.form.label.minimum-amount-of-the-sponsorships = Minimum amount of the sponsorships
+sponsor.sponsor-form.form.label.maximum-amount-of-the-sponsorships = Maximum amount of the sponsorships
+sponsor.sponsor-form.form.label.average-quantity-of-the-invoices = Average quantity of the invoices
+sponsor.sponsor-form.form.label.deviation-quantity-of-the-invoices = Deviation quantity of the invoices
+sponsor.sponsor-form.form.label.minimum-quantity-of-the-invoices = Minimum quantity of the invoices
+sponsor.sponsor-form.form.label.maximum-quantity-of-the-invoices = Maximum quantity of the invoices

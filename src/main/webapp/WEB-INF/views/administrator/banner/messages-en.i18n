@@ -1,0 +1,23 @@
+administrator.banner.list.title = Banners
+administrator.banner.form.title = Banner details
+
+administrator.banner.list.label.displayStart = Display Start 	
+administrator.banner.list.label.displayEnd = Display End 	
+administrator.banner.list.label.slogan = Slogan 	
+
+administrator.banner.list.button.create = Create banner
+
+administrator.banner.form.label.instanciationOrUpdateMoment = Instanciation or update moment
+administrator.banner.form.label.displayStart = Dsiplay start
+administrator.banner.form.label.displayEnd = Display end
+administrator.banner.form.label.image = Image 
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.link = Link 
+
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+administrator.banner.form.button.create = Create
+
+administrator.banner.form.error.badDisplayStartConcordance = Display time must start after instanciation or update moment!
+administrator.banner.form.error.badTimeConcordance = Display end must be after display start
+administrator.banner.form.error.notEnoughDuration =  Display time must be at least 1 week!

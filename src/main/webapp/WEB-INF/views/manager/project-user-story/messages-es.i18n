@@ -1,0 +1,20 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+manager.project-user-story.form.title = Relacion entre Proyecto e Historia de Usuario
+
+manager.relation.form.label.project = Proyecto
+manager.relation.form.label.user-story = Historia de Usuario
+
+manager.relation.form.button.create = Crear
+manager.relation.form.button.delete = Borrar
+
+manager.relation.form.error.not-exist-relation = La relación entre proyecto e historia de usuario no existe
+manager.relation.form.error.exist-relation = La relación entre proyecto e historia de usuario ya existe

@@ -1,0 +1,32 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.administrator-form.form.title = Panel de indicadores de administrador
+
+administrator.administrator-form.form.title.general-indicators = Indicadores generales
+
+administrator.administrator-form.form.label.total-number-administrator = Número total de administradores
+administrator.administrator-form.form.label.total-number-auditor = Número total de auditores
+administrator.administrator-form.form.label.total-number-client = Número total de clientes
+administrator.administrator-form.form.label.total-number-developer = Número total de desarrolladores
+administrator.administrator-form.form.label.total-number-manager = Número total de gerentes
+administrator.administrator-form.form.label.total-number-sponsor = Número total de patrocinadores
+administrator.administrator-form.form.label.ratio-notices-with-email-and-link = Ratio de los avisos con correo electrónico y enlace
+administrator.administrator-form.form.label.ratio-critical-objetives = Ratio de los objetivos críticos
+administrator.administrator-form.form.label.ratio-not-critical-objetives = Ratio de los objetivos no críticos
+administrator.administrator-form.form.label.average-value-risk = Average value of risks
+administrator.administrator-form.form.label.deviation-value-risk = Valor de desviación de los riesgos
+administrator.administrator-form.form.label.minimum-value-risk = Valor mínimo de riesgos
+administrator.administrator-form.form.label.maximum-value-risk = Valor máximo de riesgos
+
+administrator.administrator-form.form.label.average-number-claims-last-10-weeks = Número medio de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.deviation-number-claims-last-10-weeks = Número de desviación de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.minimum-number-claims-last-10-weeks = Número mínimo de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.maximum-number-claims-last-10-weeks = Número máximo de reclamaciones en las últimas 10 semanas
