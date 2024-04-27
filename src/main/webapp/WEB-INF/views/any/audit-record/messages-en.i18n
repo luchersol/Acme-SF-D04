@@ -1,0 +1,13 @@
+any.audit-record.list.title = Published audit records
+any.audit-record.form.title = Audit record details
+
+any.auditRecord.list.label.code = Code
+any.auditRecord.list.label.startDate = Start date 
+any.auditRecord.list.label.endDate = End date
+any.auditRecord.list.label.mark = Mark
+
+any.auditRecord.form.label.code = Code
+any.auditRecord.form.label.startDate = Start date 
+any.auditRecord.form.label.endDate = End date
+any.auditRecord.form.label.mark = Mark
+any.auditRecord.form.label.link = More information link
