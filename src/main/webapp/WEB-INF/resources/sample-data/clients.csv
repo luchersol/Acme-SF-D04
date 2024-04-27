@@ -1,0 +1,3 @@
+key,key:userAccount,identification,companyName,type,email,link
+client-01,user-account-client-01,CLI-1234,Solutions Inc.,COMPANY,macl@acme.com,null
+client-02,user-account-client-02,CLI-5474,Technologies Co.,INDIVIDUAL,ppmd@acme.com,null
