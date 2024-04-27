@@ -1,0 +1,21 @@
+key,code,moment,startDate,endDate,amount,typeOfSponsorship,contactEmail,link,projectId
+sponsorship-1,ABC-001,2023/01/15 05:20:00,2023/06/15 03:45:00,null,100,FINANCIAL,email1@example.com,http://example.com/1,1
+sponsorship-2,DEF-002,2024/02/20 09:50:00,2024/03/20 08:30:00,null,200,INKIND,email2@example.com,http://example.com/2,2
+sponsorship-3,GHI-003,2023/05/25 12:15:00,2023/11/05 11:10:00,2023/21/05 11:55:00,150,FINANCIAL,email3@example.com,http://example.com/3,3
+sponsorship-4,JKL-004,2024/06/10 17:45:00,2024/08/10 15:25:00,null,300,INKIND,email4@example.com,http://example.com/4,4
+sponsorship-5,MNO-005,2023/03/25 11:30:00,2023/04/25 07:20:00,null,250,FINANCIAL,email5@example.com,http://example.com/5,5
+sponsorship-6,PQR-006,2024/04/18 06:55:00,2024/05/18 04:40:00,2023/08/17 08:10:00,180,INKIND,email6@example.com,http://example.com/6,6
+sponsorship-7,STU-007,2022/09/20 01:25:00,2023/09/30 02:35:00,null,220,FINANCIAL,email7@example.com,http://example.com/7,7
+sponsorship-8,VWX-008,2023/12/12 14:40:00,2024/07/12 10:50:00,2024/09/12 06:55:00,270,INKIND,email8@example.com,http://example.com/8,8
+sponsorship-9,YZA-009,2023/01/14 09:20:00,2023/02/14 13:55:00,null,320,FINANCIAL,email9@example.com,http://example.com/9,1
+sponsorship-10,BCD-010,2024/10/28 10:05:00,2024/11/28 06:30:00,null,290,INKIND,email10@example.com,http://example.com/10,2
+sponsorship-11,CDE-011,2022/08/04 18:15:00,2023/08/08 12:25:00,2023/13/08 11:05:00,180,FINANCIAL,email11@example.com,http://example.com/11,3
+sponsorship-12,DEF-012,2023/01/23 03:40:00,2024/01/23 07:15:00,null,210,INKIND,email12@example.com,http://example.com/12,4
+sponsorship-13,EFG-013,2023/06/02 13:20:00,2023/10/02 17:30:00,2023/16/02 16:40:00,240,FINANCIAL,email13@example.com,http://example.com/13,5
+sponsorship-14,FGH-014,2024/01/10 08:25:00,2024/04/10 12:00:00,null,180,INKIND,email14@example.com,http://example.com/14,6
+sponsorship-15,GHI-015,2023/01/15 17:10:00,2023/03/15 09:50:00,2022/11/15 10:25:00,300,FINANCIAL,email15@example.com,http://example.com/15,7
+sponsorship-16,HIJ-016,2024/08/07 16:35:00,2024/12/07 11:20:00,null,280,INKIND,email16@example.com,http://example.com/16,8
+sponsorship-17,IJK-017,2022/07/20 07:45:00,2023/07/23 03:55:00,2023/10/21 12:40:00,200,FINANCIAL,email17@example.com,http://example.com/17,1
+sponsorship-18,JKL-018,2023/01/05 12:30:00,2024/02/05 08:10:00,null,310,INKIND,email18@example.com,http://example.com/18,2
+sponsorship-19,KLM-019,2023/09/29 05:55:00,2023/11/29 13:45:00,null,240,FINANCIAL,email19@example.com,http://example.com/19,3
+sponsorship-20,LMN-020,2024/02/23 19:20:00,2024/06/23 15:05:00,2023/08/20 17:30:00,260,INKIND,email20@example.com,http://example.com/20,4
