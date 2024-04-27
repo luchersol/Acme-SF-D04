@@ -1,0 +1,40 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.sponsorship.form.title = Detalles de patrocinio
+sponsor.sponsorship.list.title = Lista de patrocinios
+
+sponsor.sponsorship.list.label.moment = Momento
+sponsor.sponsorship.list.label.amount = Cantidad
+sponsor.sponsorship.list.label.code = Código
+sponsor.sponsorship.list.label.published = Publicado
+
+sponsor.sponsorship.list.button.create = Crear
+
+sponsor.sponsorship.form.label.code = Código: 
+sponsor.sponsorship.form.label.project = Projecto:
+sponsor.sponsorship.form.label.moment = Momento: 
+sponsor.sponsorship.form.label.startDate = Fecha inicio:
+sponsor.sponsorship.form.label.endDate = Fecha final:
+sponsor.sponsorship.form.label.type = Tipo de patrocinio:
+sponsor.sponsorship.form.label.email = Correo (Opcional):
+sponsor.sponsorship.form.label.link = Más información (Opcional):
+		
+sponsor.sponsorship.form.button.invoices = Facturas
+sponsor.sponsorship.form.button.update = Actualizar
+sponsor.sponsorship.form.button.delete = Borrar
+sponsor.sponsorship.form.button.publish = Publicar
+sponsor.sponsorship.form.button.create = Crear
+
+
+sponsor.sponsorship.form.error.duplicated = Este código ya estña cogido
+sponsor.sponsorship.form.error.too-close = La fecha de inicio debe ser anterior a la de hoy 
+sponsor.sponsorship.form.error.too-close-start = La fecha de inicio debe ser al menos un mes antes de la fecha de fin
+sponsor.sponsorship.form.error.bad-money = La suma de la cantidad total de todas las facturas debe ser igual a la cantidad del patrocinio

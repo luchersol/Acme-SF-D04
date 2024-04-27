@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+manager.manager-form.form.title = Manager dashboard
+
+manager.manager-form.form.title.general-indicators = General indicators
+manager.manager-form.form.title.application-statuses = Application statuses  
+
+manager.manager-form.form.label.total-number-project-must = Total number of project with priority "Must"
+manager.manager-form.form.label.total-number-project-should = Total number of project with priority "Should"
+manager.manager-form.form.label.total-number-project-could = Total number of project with priority "Could"
+manager.manager-form.form.label.total-number-project-wont = Total number of project with priority "Won't"
+
+manager.manager-form.form.label.average-estimated-cost-user-stories = Average estimated cost in user stories
+manager.manager-form.form.label.deviation-estimated-cost-user-stories = Deviation estimated cost in user stories
+manager.manager-form.form.label.minimum-estimated-cost-user-stories = Minimun estimated cost in user stories
+manager.manager-form.form.label.maximum-estimated-cost-user-stories = Maximun estimated cost in user stories
+
+manager.manager-form.form.label.average-estimated-cost-projects = Average estimated cost in projects
+manager.manager-form.form.label.deviation-estimated-cost-projects = Deviation estimated cost in projects
+manager.manager-form.form.label.minimum-estimated-cost-projects = Minimun estimated cost in projects
+manager.manager-form.form.label.maximum-estimated-cost-projects = Maximun estimated cost in projects
+
+
