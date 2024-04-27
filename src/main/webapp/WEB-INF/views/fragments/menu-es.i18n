@@ -1,0 +1,93 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# master.menu #################################################################
+
+master.menu.home = Inicio
+master.menu.sign-up = Registrarse
+master.menu.sign-in = Entrar
+master.menu.sign-out = Salir
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.risk-list = Lista de Riesgos
+# master.menu.any ##########################################################
+
+master.menu.any = Cualquiera
+master.menu.any.training-module = Entrenamientos publicados
+
+# master.menu.anonymous #######################################################
+ 
+master.menu.anonymous = Anónimo
+master.menu.student1 = 53918898K: Herencia Solís, Lucas Manuel
+master.menu.student2 = 80226221J: Calero López, Marina
+master.menu.student3 = 53964862P: Robles Russo, Eduardo
+master.menu.student4 = 53966183H: Miret Martín, José Manuel
+master.menu.student5 = 20231074K: Galván Cancio, Daniel
+master.menu.anonymous.favourite-link = Enlace favorito
+master.menu.anonymous.publishedCodeAudit = Auditorías de código 
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.populate-initial = Poblar BD (inicial)
+master.menu.administrator.populate-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.risk-list = Lista de mis riesgos
+
+# master.menu.any ##########################################################
+
+master.menu.any = Cualquiera
+master.menu.any.training-module = Entrenamientos publicados
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.risk-list = Lista de Riesgos
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+master.menu.user-account.become-manager = Hazte manager
+=======
+master.menu.user-account.developer = Datos de desarrollador
+master.menu.user-account.become-developer = Hazte desarrollador
+master.menu.user-account.auditor = Datos de auditor
+master.menu.user-account.become-auditor = Hazte auditor
+
+# master.menu.auditor ##########################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit.my-code-audits = Mis auditorías de código
+master.menu.auditor.dashboard = Panel de auditor
+
+# master.menu.client ####################################################
+
+master.menu.client = Cliente
+master.menu.client.contract = Mis contratos
+
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.training-module = Mis entrenamientos
+master.menu.developer.dashboard = Mi panel de control
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = Mis Proyectos
+
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.dashboard = Mi panel de patrocinador
+master.menu.sponsor.sponsorship = Mis Patrocinios
