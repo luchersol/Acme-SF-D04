@@ -1,0 +1,8 @@
+key,code,time-start,time-end,location,instructor,contact-email,link,draft-mode,key:training-module
+training-session-01,TS-A-001,2024/11/08 00:00,2024/12/01 00:00,Sevilla,Instructor 1,instructor1@ejemplo.com,http://ejemplo.com/sesion1,false,training-module-01
+training-session-02,TS-BD-002,2023/10/08 23:59,2023/12/28 23:59,Madrid,Instructor 2?,instructor2@ejemplo.com,http://ejemplo.com/sesion2,false,training-module-02
+training-session-03,TS-C-003,2023/07/24 15:00,2023/12/13 01:00,Barcelona,你好,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-03
+training-session-04,TS-C-004,2023/07/24 15:00,2023/12/13 01:00,Barcelona,你好,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-04
+training-session-05,TS-C-005,2023/07/24 15:00,2023/12/13 01:01,Barcelona,你好,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-05
+training-session-06,TS-C-006,2023/07/24 15:00,2023/12/13 01:02,Barcelona,你好dfdsf,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-06
+training-session-07,TS-C-007,2023/07/24 15:00,2023/12/13 01:03,Barcelona,你好dfdd,instructor4@ejemplo.com,http://ejemplo23.com,false,training-module-07

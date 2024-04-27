@@ -1,0 +1,31 @@
+auditor.code-audit.list.title = My code audits
+auditor.code-audit.form.title = Code audit details
+
+auditor.codeAudit.list.label.code = Code 	
+auditor.codeAudit.list.label.execution = Execution
+auditor.codeAudit.list.label.type = Type
+auditor.codeAudit.list.label.mark = Mark
+auditor.codeAudit.list.label.published = Published
+
+auditor.code-audit.list.button.create = Create code audit
+
+auditor.codeAudit.form.label.code = Code 	
+auditor.codeAudit.form.label.execution = Execution
+auditor.codeAudit.form.label.type = Type
+auditor.codeAudit.form.label.mark = Mark
+auditor.codeAudit.form.label.draftMode = Is draftMode
+
+auditor.codeAudit.form.label.correctiveActions = Corrective actions
+auditor.codeAudit.form.label.link = More information (Optional)
+auditor.codeAudit.form.label.project = Project code
+
+
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.publish = Publish
+auditor.code-audit.form.button.create = Create
+auditor.codeAudit.form.button.auditRecords = Show audit records
+
+auditor.codeAudit.form.error.notAllAuditRecordArePublished = In order to publish a code audit all its audit records must have been published
+auditor.codeAudit.form.error.duplicated = This code is already in use!
+auditor.codeAudit.form.error.invalidMarkForPublish = In order to publish a code audit its mark must be at least C 
