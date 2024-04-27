@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>250</y>
+      <w>420</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Contract
+--
+-code: String {Unique,Pattern=/[A-Z]{1,3}-[0-9]{3}/, NotBlank}
+-instantiationMoment: Date {Past, Temporal(TIMESTAMP)}
+-providerName: String {NotBlank, Length(0,75)}
+-customerName: String {NotBlank, Length(0,75)}
+-goal: String {NotBlank, Length(0,100)}
+-budget: Money
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>480</y>
+      <w>450</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ProgressLogs
+--
+-recordId: String { Unique,Pattern=/PG-[A-Z]{1,2}-[0-9]{4}/, NotBlank }
+-completeness: Integer {NotNull, Positive}
+-comment: String {NotBlank, Length(0,100)}
+-registrationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
+-responsiblePerson: {NotBlank, Length(0,75)}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>400</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>140</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Proyect
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>170</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>260</y>
+      <w>400</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Clients
+--
+-identification: String {NotBlank, Unique, Pattern=/CLI-[0-9]{4}/}
+-companyName: String {NotBlank, Length(0,75)} 
+-type: TypeClients
+-email: String {NotBlank, Email}
+-link: String {URL}
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>100</y>
+      <w>140</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+TypeClients
+--
+INDIVIDUAL
+COMPANY
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>130</x>
+      <y>340</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>The budget less than or 
+equal to the corresponding 
+project cost
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>370</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>460</y>
+      <w>270</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ClientForm
+--
+-completenessBelow25: Integer
+-completenessBetween25and50: Integer
+-completenessBetween50and75: Integer
+-completenessAbove75: Integer
+-averageBudgetOfContracts: Money
+-deviationBudgetOfContracts: Money
+-minimumBudgetOfContracts: Money
+-maximumBudgetOfContracts: Money
+
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>330</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
