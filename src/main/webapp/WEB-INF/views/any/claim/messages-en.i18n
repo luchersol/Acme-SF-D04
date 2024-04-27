@@ -1,0 +1,33 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.claim.form.title = Claim form
+any.claim.list.title = Listing of claims
+
+
+any.claim.form.label.code = Code
+any.claim.form.label.instantionMoment = Instantion Moment
+any.claim.form.label.heading = Heading
+any.claim.form.label.description = Description
+any.claim.form.label.departament = Departament
+any.claim.form.label.email = Email (Optional)
+any.claim.form.label.link = Link (Optional)
+any.claim.form.label.draftMode = Draft Mode
+
+any.claim.list.label.code = Title
+any.claim.list.label.heading = Heading
+any.claim.list.label.link = Link
+
+any.claim.form.label.confirmation = Confirmation
+any.claim.form.button.publish = Publish
+
+any.claim.list.button.publish = Publish
+
+any.claim.form.error.duplicated-code = Musn't exist two equal codes
