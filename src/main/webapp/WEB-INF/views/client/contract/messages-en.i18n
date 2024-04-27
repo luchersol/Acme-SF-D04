@@ -1,0 +1,39 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+client.contract.form.title = Contract form
+client.contract.list.title = Listing of contract
+
+client.contract.form.label.code = Code:
+client.contract.form.label.project = Project:
+client.contract.form.label.instantiationMoment = Instantiation Moment:
+client.contract.form.label.providerName = Provider Name:
+client.contract.form.label.customerName = Customer Name:
+client.contract.form.label.goal = Goal:
+client.contract.form.label.budget = Budget:
+
+client.contract.form.button.progress-log = Progress Log
+
+client.contract.form.button.delete = Delete
+client.contract.form.button.update = Update
+client.contract.form.button.create = Create
+client.contract.form.button.publish = Publish
+
+client.contract.list.label.code = Code
+client.contract.list.label.providerName = Provider Name
+client.contract.list.label.customerName = Customer Name
+
+client.contract.list.button.create = Create
+
+client.contract.form.error.budget = The budget must be positive or zero
+client.contract.form.error.code = The code is already taken
+client.contract.form.error.publish = You cannot publish without associated progress log
+client.contract.form.error.allpublish = Associated  progress log not publish
+client.contract.form.error.budgetExcedCostProject = Budget exceeds project cost
