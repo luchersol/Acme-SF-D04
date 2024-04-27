@@ -1,0 +1,27 @@
+auditor.audit-record.list.title = My audit records
+auditor.audit-record.form.title = Audit record details
+
+auditor.auditRecord.list.label.code = Code
+auditor.auditRecord.list.label.startDate = Start date 
+auditor.auditRecord.list.label.endDate = End date
+auditor.auditRecord.list.label.mark = Mark
+auditor.auditRecord.list.label.published = Published
+
+auditor.auditRecord.form.label.code = Code
+auditor.auditRecord.form.label.startDate = Start date 
+auditor.auditRecord.form.label.endDate = End date
+auditor.auditRecord.form.label.mark = Mark
+auditor.auditRecord.form.label.link = More information link
+
+auditor.auditRecord.list.button.create = Create
+auditor.auditRecord.form.button.create = Create 
+
+auditor.auditRecord.form.button.update = Update 
+auditor.auditRecord.form.button.delete = Delete
+auditor.auditRecord.form.button.publish = Publish
+
+auditor.auditRecord.form.error.duplicated = This code is already taken!
+auditor.auditRecord.form.error.notEnoughDuration = The audit record must last at least 1 hour
+auditor.auditRecord.form.error.badTimeConcordance = Start date must be before end date
+auditor.auditRecord.form.error.codeAudit = This entity does not belongs to you
+auditor.auditRecord.form.error.badStartDate = Start date must be after execution date of its code audit!
