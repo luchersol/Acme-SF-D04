@@ -1,0 +1,34 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+sponsor.invoice.form.title = Detalles de patrocinio
+sponsor.invoice.list.title = Lista de patrocinios
+
+sponsor.invoice.list.label.registrationTime = Fecha de registro
+sponsor.invoice.list.label.dueDate = Fecha de vencimiento
+sponsor.invoice.list.label.code = Código
+
+sponsor.invoice.list.button.create = Create
+
+sponsor.invoice.form.label.code = Código: 
+sponsor.invoice.form.label.registrationTime = Fecha de registro: 
+sponsor.invoice.form.label.dueDate = Fecha de vencimiento:
+sponsor.invoice.form.label.quantity = Cantidad:
+sponsor.invoice.form.label.tax = Impuesto:
+sponsor.invoice.form.label.link = Más información:
+		
+sponsor.invoice.form.button.update = Actualizar
+sponsor.invoice.form.button.delete = Eliminar
+sponsor.invoice.form.button.publish = Publicar
+sponsor.invoice.form.button.create = Crear
+
+sponsor.sponsorship.form.error.duplicated = Este código no está libre
+sponsor.sponsorship.form.error.too-close = La fecha de vencimiento debe ser anterior a la de hoy 
+sponsor.sponsorship.form.error.negative-salary = La cantidad debe ser positiva
