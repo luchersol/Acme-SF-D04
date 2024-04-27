@@ -1,0 +1,21 @@
+key,key:userAccount,name,benefits,web,email
+sponsor-1,user-account-sponsor-01,Jose Manuel,"Benefit1, Benefit2, Benefit3",http://web1.com,josema@acme.com
+sponsor-2,user-account-sponsor-02,Alejandro,"Benefit4, Benefit5, Benefit6",http://web2.com,alex@acme.com
+sponsor-3,null,Name3,"Benefit7, Benefit8, Benefit9",http://web3.com,email3@example.com
+sponsor-4,null,Name4,"Benefit10, Benefit11, Benefit12",http://web4.com,email4@example.com
+sponsor-5,null,Name5,"Benefit13, Benefit14, Benefit15",http://web5.com,email5@example.com
+sponsor-6,null,Name6,"Benefit16, Benefit17, Benefit18",http://web6.com,email6@example.com
+sponsor-7,null,Name7,"Benefit19, Benefit20, Benefit21",http://web7.com,email7@example.com
+sponsor-8,null,Name8,"Benefit22, Benefit23, Benefit24",http://web8.com,email8@example.com
+sponsor-9,null,Name9,"Benefit25, Benefit26, Benefit27",http://web9.com,email9@example.com
+sponsor-10,null,Name10,"Benefit28, Benefit29, Benefit30",http://web10.com,email10@example.com
+sponsor-11,null,Name11,"Benefit31, Benefit32, Benefit33",http://web11.com,email11@example.com
+sponsor-12,null,Name12,"Benefit34, Benefit35, Benefit36",http://web12.com,email12@example.com
+sponsor-13,null,Name13,"Benefit37, Benefit38, Benefit39",http://web13.com,email13@example.com
+sponsor-14,null,Name14,"Benefit40, Benefit41, Benefit42",http://web14.com,email14@example.com
+sponsor-15,null,Name15,"Benefit43, Benefit44, Benefit45",http://web15.com,email15@example.com
+sponsor-16,null,Name16,"Benefit46, Benefit47, Benefit48",http://web16.com,email16@example.com
+sponsor-17,null,Name17,"Benefit49, Benefit50, Benefit51",http://web17.com,email17@example.com
+sponsor-18,null,Name18,"Benefit52, Benefit53, Benefit54",http://web18.com,email18@example.com
+sponsor-19,null,Name19,"Benefit55, Benefit56, Benefit57",http://web19.com,email19@example.com
+sponsor-20,null,Name20,"Benefit58, Benefit59, Benefit60",http://web20.com,email20@example.com

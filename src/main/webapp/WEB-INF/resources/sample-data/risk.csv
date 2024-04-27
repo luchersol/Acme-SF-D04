@@ -1,0 +1,4 @@
+key,reference,identification-date,impact,probability,value,description,link,key:project
+risk-001,R-001,2012/02/02 10:00,0.05,0.2,1000,"Market volatility risk","http://example.com/risk-001",project-001
+risk-002,R-002,2019/02/24 23:59,0.1,0.3,2000,"Supply chain disruption risk","http://example.com/risk-002",project-002
+risk-003,R-003,2018/02/13 00:00,0.08,0.25,1500,"Regulatory compliance risk","http://example.com/risk-003",project-003
