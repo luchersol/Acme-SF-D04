@@ -1,0 +1,4 @@
+key,code,time-start,time-end,location,instructor,contact-email,link,key:training-module
+training-session-001,TS-A-001,2024/11/08 00:00,2024/12/01 00:00,Sevilla,Instructor 1,instructor1@ejemplo.com,http://ejemplo.com/sesion1,training-module-001
+training-session-002,TS-BD-002,2023/10/08 23:59,2023/12/28 23:59,Madrid,Instructor 2?,instructor2@ejemplo.com,http://ejemplo.com/sesion2,training-module-002
+training-session-003,TS-C-003,2023/07/24 15:00,2023/12/13 01:00,Barcelona,你好,instructor3@ejemplo.com,http://ejemplo.com,training-module-003
