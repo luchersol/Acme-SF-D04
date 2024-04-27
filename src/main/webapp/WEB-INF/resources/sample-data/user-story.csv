@@ -1,0 +1,7 @@
+key,title,description,estimatedCost,acceptanceCriteria,link,priority,key:manager,draft-mode
+user-story-01,Story-01,Description-Story-01,3,Criteria-01,https://www.google.com/user-story-01,MUST,manager-01,false
+user-story-02,Story-02,Description-Story-02,2,Criteria-02,null,SHOULD,manager-02,false
+user-story-03,Story-03,Description-Story-03,5,Criteria-03,null,WONT,manager-02,false
+user-story-04,Story-04,Description-Story-04,6,Criteria-04,null,COULD,manager-01,true
+user-story-05,Story-05,Description-Story-05,2,Criteria-05,null,WONT,manager-01,true
+user-story-06,История-06,Описание-История-06,5,Критерий-06,https://www.google.com/user-story-06,WONT,manager-02,false
