@@ -1,0 +1,36 @@
+administrator.objective.form.title = Formulario objetivo
+administrator.objective.list.title = Listado de mis objetivos
+
+administrator.objective.form.label.instantiationMoment = Momento de creación:
+administrator.objective.form.label.title = Título:
+administrator.objective.form.label.description = Descripción:
+administrator.objective.form.label.priority = Prioridad:
+administrator.objective.form.label.status = Estado:
+administrator.objective.form.label.startDate = Fecha de inicio:
+administrator.objective.form.label.endDate = Fecha de fin:
+administrator.objective.form.label.link = Enlace:
+
+
+administrator.objective.form.button.create = Crear
+
+administrator.objective.list.label.instantiationMoment = Momento de creación:
+administrator.objective.list.label.title = Título:
+administrator.objective.list.label.description = Descripción:
+administrator.objective.list.label.priority = Prioridad:
+administrator.objective.list.label.status = Status:
+administrator.objective.list.label.startDate = Fecha de inicio:
+administrator.objective.list.label.endDate = Fecha de fin:
+administrator.objective.list.label.link = Enlace:
+
+administrator.objective.form.label.project = Projecto
+
+administrator.objective.form.error.duplicated = Esta referencia ya está tomada
+
+administrator.objective.form.button.update = Actualizar
+administrator.objective.form.button.delete = Eliminar
+administrator.objective.list.button.create = Crear
+
+
+administrator.objective.form.button.update = Actualizar
+administrator.objective.form.button.delete = Eliminar
+administrator.objective.list.button.create = Crear

@@ -1,0 +1,23 @@
+administrator.banner.list.title = Anuncios
+administrator.banner.form.title = Detalles del enuncio
+
+administrator.banner.list.label.displayStart = Inicio de viasualización 	
+administrator.banner.list.label.displayEnd = Final de viasualización 	
+administrator.banner.list.label.slogan = Slogan 	
+
+administrator.banner.list.button.create = Crear anuncio
+
+administrator.banner.form.label.instanciationOrUpdateMoment = Fecha de creación o actualización
+administrator.banner.form.label.displayStart = Inicio de viasualización
+administrator.banner.form.label.displayEnd = Final de viasualización
+administrator.banner.form.label.image = Imagen 
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.link = Enlace 
+
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Borrar
+administrator.banner.form.button.create = Crear
+
+administrator.banner.form.error.badDisplayStartConcordance = El tiempo de despliegue debe comenzar después de la creación o la actualización del anuncio
+administrator.banner.form.error.badTimeConcordance = El final del tiempo de visualización debe ser posterior al inicio
+administrator.banner.form.error.notEnoughDuration =  El tiempo de despliegue debe ser como mínimo de una semana

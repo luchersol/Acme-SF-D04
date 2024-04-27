@@ -1,0 +1,27 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.administrator-form.form.title = Administrator form
+
+administrator.administrator-form.form.title.general-indicators = General indicators
+
+administrator.administrator-form.form.label.total-number-administrator = Total number of administrators
+administrator.administrator-form.form.label.total-number-auditor = Total number of auditor
+administrator.administrator-form.form.label.total-number-client = Total number of client
+administrator.administrator-form.form.label.total-number-developer = Total number of developer
+administrator.administrator-form.form.label.total-number-manager = Total number of manager
+administrator.administrator-form.form.label.total-number-sponsor = Total number of sponsor
+administrator.administrator-form.form.label.ratio-notices-with-email-and-link = Ratio of the notices with email and link
+administrator.administrator-form.form.label.ratio-critical-objetives = Ratio of the critical objectives
+administrator.administrator-form.form.label.ratio-not-critical-objetives = Ratio of the non critical objectives
+administrator.administrator-form.form.label.average-value-risk = Average value of risks
+administrator.administrator-form.form.label.deviation-value-risk = Deviation value of risks
+administrator.administrator-form.form.label.minimum-value-risk = Minimum value of risks
+administrator.administrator-form.form.label.maximum-value-risk = Maximum value of risks

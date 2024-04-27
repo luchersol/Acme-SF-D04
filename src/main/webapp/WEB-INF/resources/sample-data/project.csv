@@ -1,0 +1,5 @@
+key,code,title,abstractProject,indication,cost,link,draft-mode,key:manager
+project-01,PRO-0001,INPACTO,INPACTO-abstract,false,EUR 8032.13,https://www.google.com/project-01,false,manager-01
+project-02,PRO-0002,IRIS,IRIS-abstract,false,USD 6906.02,https://www.google.com/project-02,false,manager-02
+project-03,PRO-0003,FALCO,FALCO-abstract,true,USD 10006.02,null,true,manager-01
+project-04,PRO-0004,ФЕНСИ,FENSI-аннотация,false,EUR 60906.02,null,false,manager-02
