@@ -1,0 +1,24 @@
+administrator.objective.form.title = Formulario objetivo
+administrator.objective.list.title = Listado de mis objetivos
+
+administrator.objective.form.label.instantiationMoment = Momento de creación
+administrator.objective.form.label.title = Título
+administrator.objective.form.label.description = Descripción
+administrator.objective.form.label.priority = Prioridad
+administrator.objective.form.label.status = Estado
+administrator.objective.form.label.startDate = Fecha de inicio
+administrator.objective.form.label.endDate = Fecha de fin
+administrator.objective.form.label.link = Enlace
+administrator.objective.form.label.confirmation = Confirmación
+
+administrator.objective.form.button.post = Crear
+
+administrator.objective.list.label.instantiationMoment = Momento de creación
+administrator.objective.list.label.title = Título
+administrator.objective.list.label.priority = Prioridad
+
+administrator.objective.list.button.post = Crear
+
+administrator.objective.form.error.startDate = La fecha de inicio debe ser posterior al momento de creación 
+
+administrator.objective.form.error.endDate = La fecha de fin debe ser posterior a la fecha de inicio

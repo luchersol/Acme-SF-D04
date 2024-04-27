@@ -1,0 +1,19 @@
+authenticated.objective.form.title = Formulario objetivo
+authenticated.objective.list.title = Listado de mis objetivos
+
+authenticated.objective.form.label.instantiationMoment = Momento de creación
+authenticated.objective.form.label.title = Título
+authenticated.objective.form.label.description = Descripción
+authenticated.objective.form.label.priority = Prioridad
+authenticated.objective.form.label.status = Estado
+authenticated.objective.form.label.startDate = Fecha de inicio
+authenticated.objective.form.label.endDate = Fecha de fin
+authenticated.objective.form.label.link = Enlace
+
+
+
+authenticated.objective.list.label.instantiationMoment = Momento de creación
+authenticated.objective.list.label.title = Título
+authenticated.objective.list.label.priority = Prioridad
+
+
