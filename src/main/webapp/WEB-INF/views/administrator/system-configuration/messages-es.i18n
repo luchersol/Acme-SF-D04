@@ -1,0 +1,6 @@
+administrator.system-configuration.form.title = Configuración del sistema
+
+administrator.system-configuration.form.label.systemCurrency = Moneda del sistema:
+administrator.system-configuration.form.label.acceptedCurrencies = Monedas aceptadas:
+
+administrator.system-configuration.form.button.update = Actualizar

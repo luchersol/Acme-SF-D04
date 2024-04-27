@@ -1,0 +1,19 @@
+any.code-audit.list.title = Auditorías de código publicadas
+any.code-audit.form.title = Detalles de auditoría de código
+
+any.codeAudit.list.label.code = Código	
+any.codeAudit.list.label.execution = Fecha de ejecución
+any.codeAudit.list.label.type = Tipo
+any.codeAudit.list.label.mark = Nota
+
+any.codeAudit.form.label.code = Código	 	
+any.codeAudit.form.label.execution = Fecha de ejecución
+any.codeAudit.form.label.type = Tipo
+any.codeAudit.form.label.mark = Nota
+
+any.codeAudit.form.label.correctiveActions = Acciones correctivas
+any.codeAudit.form.label.link = Más información (Optional)
+any.codeAudit.form.label.project = Código de proyecto
+any.codeAudit.form.label.auditorName = Nombre del auditor
+
+any.codeAudit.form.button.auditRecords = Mostrar registros de auditoría

@@ -1,0 +1,14 @@
+any.audit-record.list.title = Registros de auditoría publicados
+any.audit-record.form.title = Detalles del registro
+
+any.auditRecord.list.label.code = Código
+any.auditRecord.list.label.startDate = Fecha inicio 
+any.auditRecord.list.label.endDate = Fecha Fin
+any.auditRecord.list.label.mark = Nota
+
+any.auditRecord.form.label.code = Código
+any.auditRecord.form.label.startDate = Fecha inicio 
+any.auditRecord.form.label.endDate = Fecha Fin
+any.auditRecord.form.label.mark = Nota
+any.auditRecord.form.label.link = Más información
+
