@@ -1,0 +1,11 @@
+
+authenticated.auditor.form.title = Formulario de auditor
+
+authenticated.auditor.form.button.create = Registrarse
+authenticated.auditor.form.button.update = Actualizar
+
+
+authenticated.auditor.form.label.firm = Firma
+authenticated.auditor.form.label.professionalId = Id profesional 
+authenticated.auditor.form.label.certifications = Certificationes
+authenticated.auditor.form.label.link = Link (Opcional)

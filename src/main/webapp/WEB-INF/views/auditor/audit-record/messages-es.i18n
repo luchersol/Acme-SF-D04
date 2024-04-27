@@ -1,0 +1,26 @@
+auditor.audit-record.list.title = Mis registros de auditoría
+auditor.audit-record.form.title = Detalles del registro
+
+auditor.auditRecord.list.label.code = Código
+auditor.auditRecord.list.label.startDate = Fecha inicio 
+auditor.auditRecord.list.label.endDate = Fecha Fin
+auditor.auditRecord.list.label.mark = Nota
+auditor.auditRecord.list.label.draftMode = Modo Borrador
+
+auditor.auditRecord.form.label.code = Código
+auditor.auditRecord.form.label.startDate = Fecha inicio 
+auditor.auditRecord.form.label.endDate = Fecha Fin
+auditor.auditRecord.form.label.mark = Nota
+auditor.auditRecord.form.label.link = Más información
+
+auditor.auditRecord.list.button.create = Crear
+auditor.auditRecord.form.button.create = Crear
+
+auditor.auditRecord.form.button.update = Actualizar
+auditor.auditRecord.form.button.delete = Borrar
+auditor.auditRecord.form.button.publish = Publicar
+
+auditor.auditRecord.form.error.duplicated = ¡El código ya está en uso!
+auditor.auditRecord.form.error.notEnoughDuration = El registro de uditoría debe durar al menos 1 hora
+auditor.auditRecord.form.error.badTimeConcordance = La fecha de inicio debe ser anterior a la de final
+auditor.auditRecord.form.error.codeAudit = Esta entidad no te pertenece

@@ -1,0 +1,39 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-session.form.title = Detalles de la sesión de entrenamiento
+developer.training-session.list.title = Lista de sesiones de entrenamiento
+
+developer.training-session.form.label.code = Código:
+developer.training-session.form.label.timeStart = Hora de inicio:
+developer.training-session.form.label.timeEnd = Hora de finalización:
+developer.training-session.form.label.location = Ubicación:
+developer.training-session.form.label.instructor = Instructor:
+developer.training-session.form.label.contactEmail = Correo electrónico de contacto:
+developer.trainingSession.form.label.link = Enlace: (Opcional)
+
+developer.training-session.form.button.create = Crear	
+developer.training-session.form.button.update = Actualizar
+developer.training-session.form.button.delete = Borrar
+developer.training-session.form.button.publish = Publicar
+
+developer.training-session.list.label.code = Código
+developer.training-session.list.label.timeStart = Hora de inicio
+developer.training-session.list.label.timeEnd = Hora de finalización
+developer.training-session.list.label.location = Ubicación
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.contactEmail = Correo electrónico de contacto
+developer.training-session.form.label.link = Enlace
+
+developer.training-session.list.button.create = Crear
+
+developer.training-session.form.error.duplicated = Esta referencia no está libre
+developer.training-session.form.error.notOneWeekAhead = At least one week after the current date.
+developer.training-session.form.error.notOneWeekLong = Tiene que tener de periodo minimo 1 semana 
