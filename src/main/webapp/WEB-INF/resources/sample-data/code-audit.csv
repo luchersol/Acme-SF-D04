@@ -1,0 +1,14 @@
+key,key:project,draft-mode,code,execution,type,corrective-actions,link
+code-audit-01,project-01,false,好BC-123,2019/08/25 22:15,STATIC,corrective-actions1,null
+code-audit-02,project-02,false,X-456,2010/07/25 23:15,STATIC,corrective-actions2,null
+code-audit-03,project-02,false,AA-000,2010/07/25 23:16,STATIC,corrective-actions3,null
+code-audit-04,project-02,true,ZZZ-100,2010/07/25 23:19,STATIC,corrective-actions4,null
+code-audit-05,project-03,true,JKL-851,2020/02/29 23:59,STATIC,corrective-actions5,null
+code-audit-06,project-03,true,XDD-221,2020/12/31 23:59,STATIC,corrective-actions6,null
+code-audit-07,project-03,true,DDD-222,2020/02/05 00:00,STATIC,corrective-actions7,null
+code-audit-08,project-03,true,OOO-000,2020/02/05 00:01,DYNAMIC,actions-duplicated,null
+code-audit-09,project-03,true,OOO-001,2020/02/05 00:02,STATIC,a,null
+code-audit-10,project-03,true,OOO-002,2020/02/05 00:03,STATIC,awesome-exmaple-w1xd-ژنە =?óü←,null
+code-audit-11,project-03,true,OOO-003,2020/02/05 00:04,STATIC,xddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,null
+code-audit-12,project-03,true,OOD-000,2020/02/05 00:05,STATIC,ho la,https://www.ejemplo.com
+code-audit-13,project-03,true,OOO-004,2020/02/05 00:06,STATIC,actions-duplicated,http://ev.us.es
