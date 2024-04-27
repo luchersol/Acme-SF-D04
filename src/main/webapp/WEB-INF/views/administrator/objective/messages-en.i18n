@@ -1,0 +1,37 @@
+administrator.objective.form.title = Objective Form
+administrator.objective.list.title = Listing of My Objectives
+
+administrator.objective.form.label.instantiationMoment = Instantiation Moment:
+administrator.objective.form.label.title = Title:
+administrator.objective.form.label.description = Description:
+administrator.objective.form.label.priority = Priority:
+administrator.objective.form.label.status = Status:
+administrator.objective.form.label.startDate = Start Date:
+administrator.objective.form.label.endDate = End Date:
+administrator.objective.form.label.link = Link:
+
+
+administrator.objective.form.button.create = Create
+
+administrator.objective.list.label.instantiationMoment = Instantiation Moment:
+administrator.objective.list.label.title = Title:
+administrator.objective.list.label.description = Description:
+administrator.objective.list.label.priority = Priority:
+administrator.objective.list.label.status = Status:
+administrator.objective.list.label.startDate = Start Date:
+administrator.objective.list.label.endDate = End Date:
+administrator.objective.list.label.link = Link:
+
+administrator.objective.form.label.project = Project
+
+administrator.objective.form.error.duplicated = This reference is already taken
+
+administrator.objective.form.button.update = Update
+administrator.objective.form.button.delete = Delete
+administrator.objective.list.button.create = Create
+
+
+administrator.objective.form.button.update = Update
+administrator.objective.form.button.delete = Delete
+administrator.objective.list.button.create = Create
+
