@@ -1,0 +1,26 @@
+administrator.objective.form.title = Objective Form
+administrator.objective.list.title = Listing of My Objectives
+
+administrator.objective.form.label.instantiationMoment = Instantiation Moment
+administrator.objective.form.label.title = Title
+administrator.objective.form.label.description = Description
+administrator.objective.form.label.priority = Priority
+administrator.objective.form.label.status = Status
+administrator.objective.form.label.startDate = Start Date
+administrator.objective.form.label.endDate = End Date
+administrator.objective.form.label.link = Link
+administrator.objective.form.label.confirmation = Confirmation
+
+administrator.objective.form.button.post = Create
+
+administrator.objective.list.label.instantiationMoment = Instantiation Moment
+administrator.objective.list.label.title = Title
+administrator.objective.list.label.priority = Priority
+
+
+administrator.objective.list.button.post = Create
+
+
+administrator.objective.form.error.startDate = The start date must be after the instantiation moment
+
+administrator.objective.form.error.endDate = The end date must be after the start date

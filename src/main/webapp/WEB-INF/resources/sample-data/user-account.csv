@@ -1,0 +1,19 @@
+key,enabled,identity,password,username
+user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
+user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
+user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
+user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-manager-01,true,"UserIdentity{name: 'Lucas Manuel', surname: 'Herencia Solis', email: 'lmhs@acme.com'}",manager1,manager1
+user-account-manager-02,true,"UserIdentity{name: 'Eduardo', surname: 'Robles Russo', email: 'edrr@acme.com'}",manager2,manager2
+user-account-manager-03,true,"UserIdentity{name: 'VACIO', surname: 'VACIO', email: 'vacio@acme.com'}",manager3,manager3
+user-account-client-01,true,"UserIdentity{name: 'Marina', surname: 'Calero Lopez',email: 'macl@acme.com'}",client1,client1
+user-account-client-02,true,"UserIdentity{name: 'Pepa', surname: 'Matin Duran', email: 'ppmd@acme.com'}",client2,client2
+user-account-developer-01,true,"UserIdentity{name: 'Nacho', surname: 'Gonzalez Murrillo', email: 'nacho@acme.com'}",developer1,developer1
+user-account-developer-02,true,"UserIdentity{name: 'Daniel', surname: 'Galván Russo', email: 'dani@acme.com'}",developer2,developer2
+user-account-auditor-01,true,"UserIdentity{name: 'Daniel', surname: 'Galván Cancio', email: 'dagc@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Jorge', surname: 'Negro Blanco', email: 'jonb@acme.com'}",auditor2,auditor2
+user-account-auditor-03,true,"UserIdentity{name: 'Pedra', surname: 'Blanca Negra', email: 'janeA@acme.com'}",auditor3,auditor3
+user-account-sponsor-01,true,"UserIdentity{name: 'Jose Manuel', surname: 'Miret Martín', email: 'josema@acme.com'}",sponsor1,sponsor1
+user-account-sponsor-02,true,"UserIdentity{name: 'Alejandro', surname: 'Izquierdo Bejarano', email: 'alex@acme.com'}",sponsor2,sponsor2
+user-account-administrator-03,true,"UserIdentity{name: 'Lola', surname: 'Capote González', email: 'lolita@acme.com'}",administrator1,administrator1
+user-account-administrator-02,true,"UserIdentity{name: 'Manuel', surname: 'García Pérez', email: 'manux@acme.com'}",administrator2,administrator2
