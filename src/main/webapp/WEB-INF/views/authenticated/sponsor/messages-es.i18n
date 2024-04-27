@@ -1,0 +1,11 @@
+
+authenticated.consumer.form.title = Formulario de patrocinador
+
+authenticated.sponsor.form.button.create = Registrarse
+authenticated.sponsor.form.button.update = Actualizar
+
+
+authenticated.sponsor.form.label.firm = Nombre
+authenticated.sponsor.form.label.benefits = Beneficios 
+authenticated.sponsor.form.label.web = Página web (Opcional)
+authenticated.sponsor.form.label.email = Correo (Opcional)

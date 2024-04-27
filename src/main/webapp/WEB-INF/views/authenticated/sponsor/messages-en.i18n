@@ -1,0 +1,11 @@
+
+authenticated.consumer.form.title = Sponsor form
+
+authenticated.sponsor.form.button.create = Register
+authenticated.sponsor.form.button.update = Update
+
+
+authenticated.sponsor.form.label.name = Name
+authenticated.sponsor.form.label.benefits = Benefits
+authenticated.sponsor.form.label.web = Web page (Optional) 
+authenticated.sponsor.form.label.email = Email (Optional)

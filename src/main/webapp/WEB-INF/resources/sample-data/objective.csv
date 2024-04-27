@@ -1,0 +1,7 @@
+key,instantiation-moment,title,description,priority,status,start-date,end-date,link,key:administrator
+objective-01,2020/03/10 10:40,Reunión,a,LOW,false,2020/04/10 10:30,2022/02/01 10:00,https://ev.us.es/,administrator-02
+objective-02,2019/05/30 23:40,part1d0,jud4d0r3s,MEDIUM,true,2019/06/03 09:00,2022/02/01 10:00,https://www.renfe.com/,administrator-02
+objective-03,2012/02/29 23:59,fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff,f?,HIGH,true,2012/03/01 09:00,2022/02/01 10:00,null,administrator-02
+objective-04,2018/12/31 23:59,t,dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,HIGH,false,2019/01/02 17:00,2019/04/22 10:00,null,administrator-03
+objective-05,2020/01/01 00:00,일각수,말이 아니면 뭐야,LOW,false,2020/03/28 23:59,2020/03/29 03:00,null,administrator-03
+objective-06,2010/12/30 14:20,Resolver problemas,intentemos arreglarlo cuanto antes,MEDIUM,false,2010/12/30 14:20,2022/02/01 10:00,null,administrator-03
