@@ -1,0 +1,96 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# master.menu #################################################################
+
+master.menu.home = Inicio
+master.menu.sign-up = Registrarse
+master.menu.sign-in = Entrar
+master.menu.sign-out = Salir
+
+# master.menu.anonymous #######################################################
+ 
+master.menu.anonymous = Anónimo
+master.menu.student1 = 53918898K: Herencia Solís, Lucas Manuel
+master.menu.student2 = 80226221J: Calero López, Marina
+master.menu.student3 = 53964862P: Robles Russo, Eduardo
+master.menu.student4 = 53966183H: Miret Martín, José Manuel
+master.menu.student5 = 20231074K: Galván Cancio, Daniel
+master.menu.anonymous.favourite-link = Enlace favorito
+master.menu.anonymous.publishedCodeAudit = Auditorías de código 
+master.menu.authenticated = Autenticado
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.dashboard = Panel de indicadores
+master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.populate-initial = Poblar BD (inicial)
+master.menu.administrator.populate-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-down = Parar el sistema
+
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.dashboard = Mi panel de patrocinador
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Proveedor
+master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.sponsorship = Mis Patrocinios
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Consumidor
+master.menu.consumer.favourite-link = Enlace favorito
+
+
+# master.menu.consumer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.favourite-link = Mis entrenamientos
+master.menu.developer.favourite-dashboard = Mi panel de control
+
+# master.menu.any ##########################################################
+
+master.menu.any.favourite = Cualquiera
+master.menu.developer.favourite-publish = Entrenamientos publicados
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+master.menu.user-account.provider = Datos de proveedor
+master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.consumer = Datos de consumidor
+master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.consumer = Datos de desarrollador
+master.menu.user-account.become-consumer = Hazte desarrollador
+
+
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Datos de auditor
+
+# master.menu.auditor ##########################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit.my-code-audits = Mis auditorías de código
+master.menu.auditor.dashboard = Panel de auditor
+
+# master.menu.client ####################################################
+master.menu.client = Cliente
+master.menu.client.contract = Mis contratos
+master.menu.authenticated.risk-list = Lista de Riesgos
+master.menu.administrator.risk-list = Lista de mis riesgos

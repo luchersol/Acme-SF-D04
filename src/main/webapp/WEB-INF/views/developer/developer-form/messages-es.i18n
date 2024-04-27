@@ -1,0 +1,18 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.developer-form.form.title = Tablero del Desarrollador
+developer.developer-form.form.title.general-indicators = Indicadores Generales
+developer.developer-form.form.label.total-training-modules-with-update-moment = Total de Módulos de Entrenamiento con Momento de Actualización
+developer.developer-form.form.label.total-training-sessions-with-link = Total de Sesiones de Entrenamiento con Enlace
+developer.developer-form.form.label.average-time-of-training = Tiempo Promedio de Entrenamiento
+developer.developer-form.form.label.deviation-time-of-training = Desviación Estándar del Tiempo de Entrenamiento
+developer.developer-form.form.label.minimum-time-of-training = Tiempo Mínimo de Entrenamiento
+developer.developer-form.form.label.maximum-time-of-training = Tiempo Máximo de Entrenamiento
