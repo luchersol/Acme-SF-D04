@@ -73,7 +73,7 @@ public class AuthenticatedNoticePostService extends AbstractService<Authenticate
 		}
 
 	}
-	
+
 	@Override
 	public void perform(final Notice object) {
 		assert object != null;
