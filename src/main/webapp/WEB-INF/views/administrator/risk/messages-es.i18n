@@ -1,5 +1,5 @@
 administrator.risk.form.title = Formulario de Riesgo
-administrator.risk.list.title = Listado de mis riesgos
+administrator.risk.list.title = Listado de riesgos
 
 administrator.risk.form.label.reference = Referencia:
 administrator.risk.form.label.identificationDate = Fecha de Identificación:
@@ -16,6 +16,7 @@ administrator.risk.list.label.probability = Probabilidad
 administrator.risk.list.label.description = Descripción
 administrator.risk.list.label.link = Enlace
 administrator.risk.form.label.project = Proyecto
+administrator.risk.form.label.value = Valor
 
 administrator.risk.form.error.duplicated = Esta referencia ya está tomada
 

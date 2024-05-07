@@ -18,7 +18,7 @@ risk.form.label.probability = Probabilidad:
 risk.form.label.description = Descripción:
 risk.form.label.link = Enlace: (Opcional)
 risk.form.label.project = Proyecto:
-
+risk.form.label.value = Valor:
 risk.list.label.reference = Referencia
 risk.list.label.identificationDate = Fecha de Identificación
-risk.list.label.description = Descripción
+risk.list.label.value = Valor

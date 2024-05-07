@@ -57,7 +57,6 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
-
 		super.getResponse().addData(dataset);
 	}
 
