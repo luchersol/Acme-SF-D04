@@ -18,7 +18,7 @@
 <acme:list>
 	<acme:list-column code="risk.list.label.reference" path="reference"/>
 	<acme:list-column code="risk.list.label.identificationDate" path="identificationDate"/>
-	<acme:list-column code="risk.list.label.value" path="value"/>
+	<acme:list-column code="risk.list.label.description" path="description"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 

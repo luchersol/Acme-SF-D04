@@ -10,8 +10,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -48,8 +46,7 @@ public class Risk extends AbstractEntity {
 	private Double				impact;
 
 	@NotNull
-	@DecimalMin(value = "0.0", inclusive = true)
-	@DecimalMax(value = "1.0", inclusive = true)
+	@Positive
 	private Double				probability;
 
 	@NotBlank

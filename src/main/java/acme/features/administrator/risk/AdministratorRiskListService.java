@@ -39,8 +39,7 @@ public class AdministratorRiskListService extends AbstractService<Administrator,
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "reference", "identificationDate");
-		dataset.put("value", object.getValue());
+		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
 		super.getResponse().addData(dataset);
 	}
 
