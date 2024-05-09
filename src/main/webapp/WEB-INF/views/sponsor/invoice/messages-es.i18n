@@ -22,6 +22,7 @@ sponsor.invoice.form.label.code = Código:
 sponsor.invoice.form.label.registrationTime = Fecha de registro: 
 sponsor.invoice.form.label.dueDate = Fecha de vencimiento:
 sponsor.invoice.form.label.quantity = Cantidad:
+sponsor.invoice.form.label.quantity-exchange = Cantidad con divisa del sistema:
 sponsor.invoice.form.label.tax = Impuesto:
 sponsor.invoice.form.label.link = Más información (Opcional):
 		
