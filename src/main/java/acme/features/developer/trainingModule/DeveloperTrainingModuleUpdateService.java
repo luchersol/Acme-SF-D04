@@ -20,15 +20,15 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.project.Project;
 import acme.entities.training.DifficultyLevel;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleUpdateService extends AbstractAntiSpamService<Developer, TrainingModule> {
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
@@ -82,6 +82,8 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		// Validate updateMoment
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+
+		super.validateSpam(object);
 	}
 
 	@Override

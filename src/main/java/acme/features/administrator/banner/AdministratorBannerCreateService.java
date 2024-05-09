@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.banner.Banner;
 
 @Service
-public class AdministratorBannerCreateService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerCreateService extends AbstractAntiSpamService<Administrator, Banner> {
 
 	@Autowired
 	private AdministratorBannerRepository repository;
@@ -59,6 +59,7 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getDisplayEnd(), object.getDisplayStart(), 1, ChronoUnit.WEEKS);
 			super.state(goodDuration, "displayEnd", "administrator.banner.form.error.notEnoughDuration");
 		}
+		super.validateSpam(object);
 
 	}
 

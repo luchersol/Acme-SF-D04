@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
@@ -17,7 +17,7 @@ import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -68,7 +68,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			Boolean repeatedCode = ca == null || ca != null && object.getId() == ca.getId();
 			super.state(repeatedCode, "code", "auditor.codeAudit.form.error.duplicated");
 		}
-
+		super.validateSpam(object);
 	}
 
 	@Override

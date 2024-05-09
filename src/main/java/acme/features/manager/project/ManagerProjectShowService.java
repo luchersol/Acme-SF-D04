@@ -15,8 +15,10 @@ package acme.features.manager.project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 
@@ -26,14 +28,28 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Project project;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+
+		project = this.repository.findOneProjectById(id);
+		manager = project == null ? null : project.getManager();
+		status = project != null && this.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -54,8 +70,11 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		assert object != null;
 
 		Dataset dataset;
+		Money moneyExchange;
 
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getCost());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

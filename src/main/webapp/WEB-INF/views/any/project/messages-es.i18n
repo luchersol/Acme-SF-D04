@@ -16,6 +16,7 @@ any.project.form.label.title = Título
 any.project.form.label.abstractProject = Resumen
 any.project.form.label.indication = Indicación
 any.project.form.label.cost = Coste	
+any.project.form.label.cost-exchange = Coste con divisa del sistema
 any.project.form.label.link = Link	
 
 any.project.list.label.code = Código

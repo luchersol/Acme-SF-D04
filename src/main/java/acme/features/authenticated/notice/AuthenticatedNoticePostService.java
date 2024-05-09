@@ -11,11 +11,11 @@ import acme.client.data.accounts.DefaultUserIdentity;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.notice.Notice;
 
 @Service
-public class AuthenticatedNoticePostService extends AbstractService<Authenticated, Notice> {
+public class AuthenticatedNoticePostService extends AbstractAntiSpamService<Authenticated, Notice> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -71,6 +71,8 @@ public class AuthenticatedNoticePostService extends AbstractService<Authenticate
 
 			super.state(state, "confirmation", "javax.validation.constraints.AssertTrue.message");
 		}
+
+		super.validateSpam(object);
 
 	}
 

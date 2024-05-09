@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Any;
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.contract.Contract;
 
 @Service
@@ -15,7 +17,10 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyContractRepository repository;
+	private AnyContractRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService	moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -50,9 +55,12 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 		assert contract.getProject() != null;
 
 		Dataset dataset;
+		Money moneyExchange;
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", contract.getProject().getTitle());
+		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditRecord;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordUpdateService extends AbstractAntiSpamService<Auditor, AuditRecord> {
 
 	@Autowired
 	private AuditorAuditRecordRepository repository;
@@ -84,6 +84,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			boolean codeAuditIsYours = ca.getAuditor().getId() == a.getId();
 			super.state(codeAuditIsYours && ca.getDraftMode(), "codeAudit", "auditor.auditRecord.form.error.codeAudit");
 		}
+		super.validateSpam(object);
 
 	}
 

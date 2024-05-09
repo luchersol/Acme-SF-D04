@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.claim.Claim;
 
 @Service
-public class AnyClaimPublishService extends AbstractService<Any, Claim> {
+public class AnyClaimPublishService extends AbstractAntiSpamService<Any, Claim> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -67,6 +67,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 			state = !this.repository.existsByCode(object.getCode());
 			super.state(state, "code", "any.claim.form.error.duplicated-code");
 		}
+		super.validateSpam(object);
 
 	}
 

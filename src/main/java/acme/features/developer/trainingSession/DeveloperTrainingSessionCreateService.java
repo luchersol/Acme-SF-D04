@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionCreateService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -100,6 +100,8 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
 			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
 		}
+
+		super.validateSpam(object);
 	}
 
 	@Override

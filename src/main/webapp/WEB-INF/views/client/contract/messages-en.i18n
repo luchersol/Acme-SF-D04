@@ -18,6 +18,8 @@ client.contract.form.label.providerName = Provider Name:
 client.contract.form.label.customerName = Customer Name:
 client.contract.form.label.goal = Goal:
 client.contract.form.label.budget = Budget:
+client.contract.form.label.budget-exchange = Budget with system currency:
+
 
 client.contract.form.button.progress-log = Progress Log
 

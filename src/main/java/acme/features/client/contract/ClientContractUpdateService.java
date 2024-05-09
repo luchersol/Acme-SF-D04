@@ -6,20 +6,25 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
+import acme.components.MoneyExchangeService;
 import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
 @Service
-public class ClientContractUpdateService extends AbstractService<Client, Contract> {
+public class ClientContractUpdateService extends AbstractAntiSpamService<Client, Contract> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -80,6 +85,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+
+		super.validateSpam(contract);
 	}
 
 	@Override
@@ -96,6 +103,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Collection<Project> projectAllPublish;
 		SelectChoices choicesProject;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
@@ -104,6 +112,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

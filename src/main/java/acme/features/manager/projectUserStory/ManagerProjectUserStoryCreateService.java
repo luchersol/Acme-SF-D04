@@ -50,6 +50,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 			state = this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
 			super.state(state, "*", "manager.relation.form.error.exist-relation");
 		}
+
 	}
 
 	@Override

@@ -17,8 +17,10 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.audits.AuditRecord;
 import acme.entities.audits.CodeAudit;
 import acme.entities.contract.Contract;
@@ -38,7 +40,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -110,8 +115,11 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
+		Money moneyExchange;
 
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getCost());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 

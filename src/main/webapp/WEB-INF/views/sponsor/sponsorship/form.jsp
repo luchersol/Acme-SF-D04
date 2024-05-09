@@ -23,6 +23,7 @@
 	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}"/>
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
+	
 
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
