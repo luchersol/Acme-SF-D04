@@ -45,7 +45,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		poor = new Money();
 
 		poor.setAmount(0.0);
-		poor.setCurrency(this.repository.findSystemCurrency().stream().findFirst().orElse(""));
+		poor.setCurrency(this.repository.findSystemConfiguration().getSystemCurrency());
 
 		object = new Sponsorship();
 		object.setDraftMode(true);

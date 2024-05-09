@@ -6,9 +6,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.MoneyExchangeService;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
@@ -21,7 +23,10 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	private SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService			moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -62,7 +67,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
+		super.bind(object, "code", "moment", "startDate", "endDate", "email", "link", "type", "amount");
 		object.setProject(project);
 	}
 
@@ -90,16 +95,20 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		SelectChoices choices;
 		SelectChoices choicesType;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "type", "draftMode", "amount");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
+
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getAmount());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

@@ -8,10 +8,12 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.MoneyExchangeService;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.TypeOfSponsorship;
@@ -23,7 +25,10 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
+	private SponsorSponsorshipRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService			moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -63,7 +68,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "startDate", "endDate", "email", "link", "type");
+		super.bind(object, "code", "startDate", "endDate", "email", "link", "type", "amount");
 		object.setProject(project);
 	}
 
@@ -97,6 +102,22 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
+		Double invoicesAmounts;
+		Money finalMoney;
+		String systemCurrency;
+
+		invoicesAmounts = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream() //
+			.mapToDouble(i -> i.totalAmount().getAmount() / this.repository.findMoneyRateByMoneyCurrency(i.totalAmount().getCurrency())) //
+			.sum();
+
+		systemCurrency = this.repository.findSystemConfiguration().getSystemCurrency();
+
+		finalMoney = new Money();
+		finalMoney.setAmount(Math.round(invoicesAmounts * this.repository.findMoneyRateByMoneyCurrency(systemCurrency) * 100.0) / 100.0);
+		finalMoney.setCurrency(this.repository.findSystemConfiguration().getSystemCurrency());
+
+		object.setAmount(finalMoney);
+
 		this.repository.save(object);
 	}
 
@@ -108,16 +129,20 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		SelectChoices choices;
 		SelectChoices choicesType;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "email", "link", "type");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "email", "link", "type", "draftMode", "amount");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
+
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getAmount());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}
