@@ -12,6 +12,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.entities.project.Project;
+import acme.features.authenticated.moneyExchange.MoneyExchangeService;
 import acme.roles.Client;
 
 @Service
@@ -20,7 +21,10 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -111,6 +115,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		Collection<Project> projectAllPublish;
 		SelectChoices choicesProject;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
@@ -119,6 +124,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

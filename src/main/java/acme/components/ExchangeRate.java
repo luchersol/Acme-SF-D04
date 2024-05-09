@@ -23,7 +23,6 @@ public class ExchangeRate {
 
 	// Attributes -------------------------------------------------------------
 
-	public String				base;
 	public Map<String, Double>	rates;
 	public Double				timestamp;
 

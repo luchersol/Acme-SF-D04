@@ -1,2 +1,2 @@
-key,systemCurrency,acceptedCurrencies
-system-configuration-01,EUR,"EUR,USD,GBP"
+key,systemCurrency,acceptedCurrencies,updateMoment
+system-configuration-01,EUR,"EUR,USD,GBP",2024/05/08 00:01

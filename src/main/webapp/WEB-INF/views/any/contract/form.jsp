@@ -23,10 +23,10 @@
 	<acme:input-textbox code="any.contract.form.label.customerName" path="customerName" readonly="true"/>
 	<acme:input-textbox code="any.contract.form.label.goal" path="goal" readonly="true"/>
 	<acme:input-money code="any.contract.form.label.budget" path="budget" readonly="true"/>
+	<jstl:if test="${moneyExchange != null }">
+		<acme:input-money code="any.contract.form.label.budget-exchange" path="moneyExchange" readonly="${true}"/>
+	</jstl:if>
 	<acme:button code="any.contract.form.button.progress-log" action="/any/progress-log/list?masterId=${id}"/>	
-	
-	
-	
 </acme:form>
 
 

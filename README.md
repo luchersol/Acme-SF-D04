@@ -11,3 +11,4 @@ the following resources:
 
 - **/fragments/**
  
+# Implementación Anti-Spam-Project

@@ -21,6 +21,9 @@
 	<acme:input-textarea code="manager.project.form.label.abstractProject" path="abstractProject"/>
 	<acme:input-checkbox code="manager.project.form.label.indication" path="indication"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
+	<jstl:if test="${moneyExchange != null }">
+		<acme:input-money code="manager.project.form.label.cost-exchange" path="moneyExchange" readonly="${true}"/>
+	</jstl:if>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 
 	<jstl:choose>

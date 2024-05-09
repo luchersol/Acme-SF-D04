@@ -16,6 +16,7 @@ manager.project.form.label.title = Title
 manager.project.form.label.abstractProject = Abstract Project
 manager.project.form.label.indication = Fatal Error
 manager.project.form.label.cost = Cost
+manager.project.form.label.cost-exchange = Cost with system currency
 manager.project.form.button.create.user-story = User Stories
 manager.project.form.label.link = Link (Optional)
 

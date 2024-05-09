@@ -12,17 +12,27 @@
 
 package acme.features.authenticated.moneyExchange;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.moneyExchangeConfiguration.MoneyRate;
+import acme.entities.systemConfiguration.SystemConfiguration;
 
 @Repository
-public interface AuthenticatedMoneyExchangeRepository extends AbstractRepository {
+public interface MoneyExchangeRepository extends AbstractRepository {
 
 	@Query("select sys.systemCurrency from SystemConfiguration sys")
 	String findSystemCurrency();
 
 	@Query("select sys.acceptedCurrencies from SystemConfiguration sys")
 	String findAcceptedCurrencies();
+
+	@Query("select sys from SystemConfiguration sys")
+	SystemConfiguration findSystemConfiguration();
+
+	@Query("select mr from MoneyRate mr")
+	List<MoneyRate> findAllMoneyRate();
 }
