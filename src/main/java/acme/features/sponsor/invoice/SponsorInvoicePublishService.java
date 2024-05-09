@@ -12,7 +12,6 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.components.MoneyExchangeService;
 import acme.entities.sponsorship.Invoice;
-import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -34,15 +33,13 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		boolean status;
 		int invoiceId;
 		Invoice invoice;
-		Sponsorship sponsorship;
 		Sponsor sponsor;
 
 		invoiceId = super.getRequest().getData("id", int.class);
 
-		sponsorship = this.repository.findOneSponsorshipByIncoiceId(invoiceId);
 		invoice = this.repository.findOneInvoiceById(invoiceId);
 		sponsor = invoice == null ? null : invoice.getSponsor();
-		status = sponsorship != null && invoice != null && sponsorship.isDraftMode() && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = invoice != null && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -102,7 +99,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		Dataset dataset;
 		Money moneyExchange;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getQuantity());
 		dataset.put("moneyExchange", moneyExchange);
 

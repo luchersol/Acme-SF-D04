@@ -28,10 +28,12 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		boolean status;
 		int masterId;
 		Sponsorship sponsorship;
+		Sponsor sponsor;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
