@@ -18,8 +18,8 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.project.Project;
-import acme.features.authenticated.moneyExchange.MoneyExchangeService;
 import acme.roles.Manager;
 
 @Service

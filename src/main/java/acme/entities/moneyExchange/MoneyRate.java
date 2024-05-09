@@ -1,6 +1,7 @@
 
-package acme.entities.moneyExchangeConfiguration;
+package acme.entities.moneyExchange;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -19,6 +20,7 @@ public class MoneyRate extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
+	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{3}")
 	private String				currency;
 

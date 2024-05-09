@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.audits.AuditRecord;
 import acme.entities.audits.CodeAudit;
 import acme.entities.contract.Contract;
@@ -31,7 +32,6 @@ import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
-import acme.features.authenticated.moneyExchange.MoneyExchangeService;
 import acme.roles.Manager;
 
 @Service

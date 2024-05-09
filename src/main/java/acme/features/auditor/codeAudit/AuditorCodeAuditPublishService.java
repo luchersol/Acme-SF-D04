@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
@@ -16,7 +16,7 @@ import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -80,6 +80,8 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			Integer notPublishedAuditRecord = this.repository.countNotPublishedAuditRecordsOfCodeAudit(object.getId());
 			super.state(notPublishedAuditRecord == 0, "mark", "auditor.codeAudit.form.error.notAllAuditRecordArePublished");
 		}
+
+		super.validateSpam(object);
 	}
 
 	@Override

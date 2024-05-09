@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
 @Service
-public class ClientContractCreateService extends AbstractService<Client, Contract> {
+public class ClientContractCreateService extends AbstractAntiSpamService<Client, Contract> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -82,6 +82,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+		super.validateSpam(contract);
 
 	}
 

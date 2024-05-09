@@ -10,12 +10,14 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.moneyExchange;
+package acme.components;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import acme.client.data.datatypes.Money;
 import acme.client.helpers.MomentHelper;
-import acme.components.ExchangeRate;
-import acme.entities.moneyExchangeConfiguration.MoneyRate;
+import acme.entities.moneyExchange.MoneyRate;
 import acme.entities.systemConfiguration.SystemConfiguration;
 
 @Service
@@ -45,7 +46,7 @@ public class MoneyExchangeService {
 		ExchangeRate record;
 		String sourceCurrency, targetCurrency;
 		Double sourceAmount, targetAmount;
-		List<MoneyRate> rates;
+		Map<String, Double> rates;
 		Date updateMoment;
 		LocalDate moment, updateMomentLocalDate;
 		boolean sameDay;
@@ -64,8 +65,11 @@ public class MoneyExchangeService {
 
 		try {
 			if (sameDay)
-				rates = this.repository.findAllMoneyRate();
+				rates = this.repository.findAllMoneyRate(sourceCurrency, targetCurrency).stream().collect(Collectors.toMap(MoneyRate::getCurrency, MoneyRate::getRate));
 			else {
+				List<MoneyRate> ratesSave = this.repository.findAllMoneyRate();
+				rates = ratesSave.stream().collect(Collectors.toMap(MoneyRate::getCurrency, MoneyRate::getRate));
+
 				api = new RestTemplate();
 
 				record = api.getForObject( //				
@@ -74,25 +78,26 @@ public class MoneyExchangeService {
 					"yeHndIIPA3fsXEMNyYTP30GmQmXWSVjs");
 				assert record != null;
 
-				rates = record.getRates().entrySet().stream().map(entry -> {
-					MoneyRate mr = new MoneyRate();
-					mr.setCurrency(entry.getKey());
-					mr.setRate(entry.getValue());
-					return mr;
-				}).toList();
+				record.getRates().forEach(rates::put);
+
+				for (MoneyRate rate : ratesSave) {
+					String currency = rate.getCurrency();
+					Double newRate = rates.get(currency);
+					rate.setRate(newRate);
+				}
 
 				sys.setUpdateMoment(new Date((long) (record.getTimestamp() * 1000L)));
 
-				this.repository.saveAll(rates);
+				this.repository.saveAll(ratesSave);
 				this.repository.save(sys);
 			}
 
-			MoneyRate rate1, rate2;
-			rate1 = rates.stream().filter(i -> i.getCurrency().equals(sourceCurrency)).findFirst().orElse(null);
-			rate2 = rates.stream().filter(i -> i.getCurrency().equals(targetCurrency)).findFirst().orElse(null);
+			Double rate1, rate2;
+			rate1 = rates.get(sourceCurrency);
+			rate2 = rates.get(targetCurrency);
 			if (rate1 != null && rate2 != null) {
 				result = new Money();
-				targetAmount = rate2.getRate() * sourceAmount / rate1.getRate();
+				targetAmount = rate2 * sourceAmount / rate1;
 				result.setAmount(targetAmount);
 				result.setCurrency(targetCurrency);
 			}

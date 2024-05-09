@@ -9,11 +9,11 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.roles.Developer;
 
 @Service
-public class AuthenticatedDeveloperCreateService extends AbstractService<Authenticated, Developer> {
+public class AuthenticatedDeveloperCreateService extends AbstractAntiSpamService<Authenticated, Developer> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -59,6 +59,7 @@ public class AuthenticatedDeveloperCreateService extends AbstractService<Authent
 	@Override
 	public void validate(final Developer object) {
 		assert object != null;
+		super.validateSpam(object);
 	}
 
 	@Override

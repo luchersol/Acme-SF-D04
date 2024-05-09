@@ -20,15 +20,15 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.project.Project;
 import acme.entities.training.DifficultyLevel;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModulePublishService extends AbstractAntiSpamService<Developer, TrainingModule> {
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
@@ -86,6 +86,8 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		super.state(!this.repository.findManyTrainingSessionsByMasterId(object.getId()).isEmpty(), "code", "developer.training-module.form.error.publish");
 		boolean allSessionsInDraftMode = this.repository.areAllTrainingSessionsPublished(object.getId());
 		super.state(allSessionsInDraftMode, "code", "developer.training-module.form.error.allpublish");
+
+		super.validateSpam(object);
 	}
 
 	@Override

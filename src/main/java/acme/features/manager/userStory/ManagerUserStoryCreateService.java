@@ -16,14 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.project.PriorityUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryCreateService extends AbstractAntiSpamService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -61,7 +61,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void validate(final UserStory object) {
-
+		super.validateSpam(object);
 	}
 
 	@Override

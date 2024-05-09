@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.risk.Risk;
 
 @Service
-public class AdministratorRiskCreateService extends AbstractService<Administrator, Risk> {
+public class AdministratorRiskCreateService extends AbstractAntiSpamService<Administrator, Risk> {
 
 	@Autowired
 	private AdministratorRiskRepository repository;
@@ -57,6 +57,7 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 			existing = this.repository.findOneRiskByReference(object.getReference());
 			super.state(existing == null, "reference", "administrator.risk.form.error.duplicated");
 		}
+		super.validateSpam(object);
 	}
 
 	@Override

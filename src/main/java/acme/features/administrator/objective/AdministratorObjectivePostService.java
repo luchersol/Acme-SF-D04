@@ -10,13 +10,13 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.objective.Objective;
 import acme.entities.objective.PriorityObjective;
 
 @Service
-public class AdministratorObjectivePostService extends AbstractService<Administrator, Objective> {
+public class AdministratorObjectivePostService extends AbstractAntiSpamService<Administrator, Objective> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -77,6 +77,8 @@ public class AdministratorObjectivePostService extends AbstractService<Administr
 
 			super.state(state, "confirmation", "javax.validation.constraints.AssertTrue.message");
 		}
+
+		super.validateSpam(objective);
 
 	}
 

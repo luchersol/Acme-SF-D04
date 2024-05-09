@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogCreateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogCreateService extends AbstractAntiSpamService<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -71,6 +71,8 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 			existing = this.repository.findOneProgressLogByRecordId(progressLog.getRecordId());
 			super.state(existing == null || existing.getId() == progressLog.getId(), "recordId", "client.progress-log.form.error.code");
 		}
+
+		super.validateSpam(progressLog);
 	}
 
 	@Override

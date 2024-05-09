@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.moneyExchange;
+package acme.components;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.moneyExchangeConfiguration.MoneyRate;
+import acme.entities.moneyExchange.MoneyRate;
 import acme.entities.systemConfiguration.SystemConfiguration;
 
 @Repository
@@ -35,4 +35,8 @@ public interface MoneyExchangeRepository extends AbstractRepository {
 
 	@Query("select mr from MoneyRate mr")
 	List<MoneyRate> findAllMoneyRate();
+
+	@Query("select mr from MoneyRate mr where mr.currency = :sourceCurrency or mr.currency = :targetCurrency")
+	List<MoneyRate> findAllMoneyRate(String sourceCurrency, String targetCurrency);
+
 }

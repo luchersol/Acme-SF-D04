@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.risk.Risk;
 
 @Service
-public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
+public class AdministratorRiskUpdateService extends AbstractAntiSpamService<Administrator, Risk> {
 
 	@Autowired
 	private AdministratorRiskRepository repository;
@@ -42,6 +42,8 @@ public class AdministratorRiskUpdateService extends AbstractService<Administrato
 	@Override
 	public void validate(final Risk object) {
 		assert object != null;
+
+		super.validateSpam(object);
 	}
 
 	@Override

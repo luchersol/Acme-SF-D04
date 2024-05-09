@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditCreateService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditCreateService extends AbstractAntiSpamService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -60,6 +60,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			super.state(ca == null, "code", "auditor.codeAudit.form.error.duplicated");
 		}
 
+		super.validateSpam(object);
 	}
 
 	@Override
