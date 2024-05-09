@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Any;
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.MoneyExchangeService;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.TypeOfSponsorship;
@@ -20,7 +22,10 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnySponsorshipRepository repository;
+	private AnySponsorshipRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -57,6 +62,7 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 		SelectChoices choicesProject;
 		Dataset dataset;
 		SelectChoices choicesType;
+		Money moneyExchange;
 
 		projects = this.repository.findAllProject();
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
@@ -68,6 +74,8 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 		dataset.put("projects", choicesProject);
 		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getAmount());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

@@ -22,6 +22,10 @@
 	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}" readonly="true"/>
 	<acme:input-textbox code="any.sponsorship.form.label.sponsorName" path="sponsorName" readonly="true" />
 	<acme:input-select code="any.sponsorship.form.label.type" path="type" choices="${types}" readonly="true"/>
+	<acme:input-money code="any.sponsorship.form.label.amount" path="amount"/>
+	<jstl:if test="${moneyExchange != null }">
+		<acme:input-money code="any.sponsorship.form.label.amount-exchange" path="moneyExchange" readonly="${true}"/>
+	</jstl:if>
 	<acme:input-email code="any.sponsorship.form.label.email" path="email" readonly="true"/>
 	<acme:input-url code="any.sponsorship.form.label.link" path="link" readonly="true"/>
 </acme:form>
