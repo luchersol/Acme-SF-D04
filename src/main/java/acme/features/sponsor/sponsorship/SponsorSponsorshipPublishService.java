@@ -98,7 +98,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			minimumDeadline = MomentHelper.getCurrentMoment();
 			super.state(MomentHelper.isBefore(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close");
 
-			maximumDeadline = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
+			maximumDeadline = object.getStartDate() == null ? null : MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
 			super.state(MomentHelper.isAfter(object.getEndDate(), maximumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
 		}
 
