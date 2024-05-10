@@ -38,7 +38,8 @@ public class MoneyExchangeService {
 
 
 	public Money computeMoneyExchange(final Money source) {
-		assert source != null;
+		if (source == null)
+			return null;
 
 		RestTemplate api;
 		SystemConfiguration sys;
