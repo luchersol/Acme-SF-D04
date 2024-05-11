@@ -64,7 +64,8 @@ public class MoneyExchangeService {
 			return null;
 
 		try {
-			if (sameDay)
+			// Cambiar true a sameDay antesde la entrega para realizar llamadas a la API
+			if (true)
 				rates = this.repository.findAllMoneyRate(sourceCurrency, targetCurrency).stream().collect(Collectors.toMap(MoneyRate::getCurrency, MoneyRate::getRate));
 			else {
 				List<MoneyRate> ratesSave = this.repository.findAllMoneyRate();
