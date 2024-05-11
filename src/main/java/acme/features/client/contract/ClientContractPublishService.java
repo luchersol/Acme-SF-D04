@@ -122,7 +122,7 @@ public class ClientContractPublishService extends AbstractAntiSpamService<Client
 
 		choicesProject = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
-		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
+		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());

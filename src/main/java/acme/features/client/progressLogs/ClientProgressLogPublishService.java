@@ -81,9 +81,8 @@ public class ClientProgressLogPublishService extends AbstractAntiSpamService<Cli
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		dataset.put("masterId", progressLog.getContract().getId());
-		dataset.put("draftMode", progressLog.getContract().getDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
