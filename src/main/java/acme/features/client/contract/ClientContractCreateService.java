@@ -108,7 +108,7 @@ public class ClientContractCreateService extends AbstractAntiSpamService<Client,
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choices = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choices = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "project", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
