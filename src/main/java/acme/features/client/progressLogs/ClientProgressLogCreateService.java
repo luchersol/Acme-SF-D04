@@ -1,10 +1,13 @@
 
 package acme.features.client.progressLogs;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.components.AbstractAntiSpamService;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
@@ -40,6 +43,10 @@ public class ClientProgressLogCreateService extends AbstractAntiSpamService<Clie
 		int masterId;
 		Contract contract;
 
+		Date moment;
+
+		moment = MomentHelper.getCurrentMoment();
+
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
 
@@ -47,7 +54,7 @@ public class ClientProgressLogCreateService extends AbstractAntiSpamService<Clie
 		progressLog.setRecordId("");
 		progressLog.setCompleteness(0.00);
 		progressLog.setComment("");
-		progressLog.setRegistrationMoment(null);
+		progressLog.setRegistrationMoment(moment);
 		progressLog.setResponsiblePerson("");
 		progressLog.setContract(contract);
 		progressLog.setDraftMode(true);
@@ -58,7 +65,7 @@ public class ClientProgressLogCreateService extends AbstractAntiSpamService<Clie
 	public void bind(final ProgressLog progressLog) {
 		assert progressLog != null;
 
-		super.bind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		super.bind(progressLog, "recordId", "completeness", "comment", "responsiblePerson");
 	}
 
 	@Override
