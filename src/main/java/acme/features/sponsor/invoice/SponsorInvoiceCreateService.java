@@ -65,7 +65,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			Invoice existing;
 
 			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated");
+			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
