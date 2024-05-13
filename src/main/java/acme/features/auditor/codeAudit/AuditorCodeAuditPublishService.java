@@ -67,7 +67,7 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 		CodeAudit ca = this.repository.findCodeAuditWithCode(object.getCode());
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
+			super.state(ca == null || ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
 			Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);

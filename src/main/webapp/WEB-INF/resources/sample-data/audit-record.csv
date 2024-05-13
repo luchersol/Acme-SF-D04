@@ -15,3 +15,5 @@ audit-record-13,code-audit-08,AU-4567-128,2019/04/25 20:20,2019/04/25 22:20,C,ht
 audit-record-14,code-audit-08,AU-4567-129,2019/04/25 20:21,2019/04/25 22:21,C,https://ev.us.es,false
 audit-record-15,code-audit-08,AU-4567-130,2019/04/25 20:22,2019/04/25 22:22,A_PLUS,null,false
 audit-record-16,code-audit-09,AU-4567-131,2019/04/25 20:22,2019/04/25 22:22,F_MINUS,null,true
+audit-record-17,code-audit-09,AU-4567-132,2019/04/25 20:22,2019/04/25 22:22,C,null,false
+Audit-record-18,code-audit-09,AU-4567-133,2019/04/25 20:22,2019/04/25 22:22,C,null,true
