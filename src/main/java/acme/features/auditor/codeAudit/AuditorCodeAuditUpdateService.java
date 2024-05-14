@@ -65,7 +65,7 @@ public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Audit
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			CodeAudit ca = this.repository.findCodeAuditWithCode(object.getCode());
-			Boolean repeatedCode = ca == null || ca != null && object.getId() == ca.getId();
+			Boolean repeatedCode = ca == null || object.getId() == ca.getId();
 			super.state(repeatedCode, "code", "auditor.codeAudit.form.error.duplicated");
 		}
 		super.validateSpam(object);
