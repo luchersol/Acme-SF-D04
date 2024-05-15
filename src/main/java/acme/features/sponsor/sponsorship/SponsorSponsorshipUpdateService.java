@@ -75,26 +75,16 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.existsOtherByCodeAndId(object.getCode(), object.getId()), "code", "sponsor.sponsorship.form.error.duplicated");
 
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
-			Date minimumDeadline;
-
-			minimumDeadline = MomentHelper.getCurrentMoment();
-			super.state(MomentHelper.isBefore(object.getStartDate(), minimumDeadline), "startDate", "sponsor.sponsorship.form.error.too-close");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("startDate"))
+			super.state(MomentHelper.isBefore(object.getStartDate(), object.getMoment()), "startDate", "sponsor.sponsorship.form.error.too-close-moment");
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date minimumDeadline;
 			Date maximumDeadline;
 
-			minimumDeadline = MomentHelper.getCurrentMoment();
-			super.state(MomentHelper.isBefore(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close");
+			super.state(MomentHelper.isBefore(object.getEndDate(), object.getMoment()), "endDate", "sponsor.sponsorship.form.error.too-close-moment");
 
 			maximumDeadline = object.getStartDate() == null ? null : MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
 			super.state(object.getStartDate() == null || MomentHelper.isAfter(object.getEndDate(), maximumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");

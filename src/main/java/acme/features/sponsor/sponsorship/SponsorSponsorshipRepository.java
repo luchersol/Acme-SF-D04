@@ -52,4 +52,7 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select count(i) = 0 from Invoice i where i.draftMode = true and i.sponsorship.id = :id")
 	Boolean allInvoicesPublishedBySponsorshipId(int id);
+
+	@Query("select count(s) = 0 from Sponsorship s where s.code = :code and s.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
 }

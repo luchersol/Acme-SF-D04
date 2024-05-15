@@ -41,3 +41,4 @@ sponsor.sponsorship.form.error.too-close = La fecha de inicio debe ser anterior 
 sponsor.sponsorship.form.error.too-close-start = La fecha de inicio debe ser al menos un mes antes de la fecha de fin
 sponsor.sponsorship.form.error.bad-money = La suma de la cantidad total de todas las facturas debe ser igual a la cantidad del patrocinio
 sponsor.sponsorship.form.error.publish-invoices = Antes de publicar un patrocinio, primero debes publicar sus facturas
+sponsor.sponsorship.form.error.too-close-moment = La fecha en la que creas el patrocinio debe ser antes de esta fecha

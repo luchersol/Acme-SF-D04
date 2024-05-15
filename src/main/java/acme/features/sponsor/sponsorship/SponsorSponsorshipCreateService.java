@@ -85,6 +85,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 			minimumDeadline = MomentHelper.getCurrentMoment();
 			super.state(MomentHelper.isBefore(object.getStartDate(), minimumDeadline), "startDate", "sponsor.sponsorship.form.error.too-close");
+
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {

@@ -40,3 +40,5 @@ sponsor.sponsorship.form.error.too-close = Start Date must be before today
 sponsor.sponsorship.form.error.too-close-start = The Start Date must be at least one month before the End Date
 sponsor.sponsorship.form.error.bad-money = The sum of the total amount of all the invoices must be equal to the amount of the sponsorship
 sponsor.sponsorship.form.error.publish-invoices = Before publishing a sponsorship, you need first to publish its invoices
+sponsor.sponsorship.form.error.too-close-moment = The date you create the sponsorship must be before this date
+
