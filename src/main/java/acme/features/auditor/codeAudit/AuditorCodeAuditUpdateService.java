@@ -73,7 +73,7 @@ public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Audit
 
 		if (!super.getBuffer().getErrors().hasErrors("execution")) {
 			Date maximumDate = this.repository.findMaximumValidExecutionDate(object.getId());
-			Boolean validExecution = object.getExecution() != null && MomentHelper.isAfter(maximumDate, object.getExecution());
+			Boolean validExecution = maximumDate == null || MomentHelper.isAfter(maximumDate, object.getExecution());
 			super.state(validExecution, "execution", "auditor.codeAudit.form.error.badExecution");
 		}
 
