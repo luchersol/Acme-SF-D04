@@ -17,9 +17,9 @@
 
 <acme:form> 
 	<acme:input-textbox code="manager.user-story.form.label.title" path="title"/>
-	<acme:input-textbox code="manager.user-story.form.label.description" path="description"/>
+	<acme:input-textarea code="manager.user-story.form.label.description" path="description"/>
 	<acme:input-integer code="manager.user-story.form.label.estimated-cost" path="estimatedCost"/>
-	<acme:input-textbox code="manager.user-story.form.label.acceptance-criteria" path="acceptanceCriteria"/>
+	<acme:input-textarea code="manager.user-story.form.label.acceptance-criteria" path="acceptanceCriteria"/>
 	<acme:input-url code="manager.user-story.form.label.link" path="link"/>
 	<acme:input-select code="manager.user-story.form.label.priority" path="priority" choices="${priorities}"/>
 

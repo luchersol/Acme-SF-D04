@@ -62,6 +62,7 @@ public class Project extends AbstractEntity {
 	private String				link;
 
 	@NotNull
+	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 	@NotNull
