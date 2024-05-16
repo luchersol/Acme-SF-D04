@@ -28,3 +28,7 @@ auditor.codeAudit.form.button.auditRecords = Mostrar registros de auditoría
 auditor.codeAudit.form.error.notAllAuditRecordArePublished = Para publicar una auditoría todos sus registros de auditoría deben haber sido publicados
 auditor.codeAudit.form.error.duplicated = ¡Este código ya está en uso!
 auditor.codeAudit.form.error.invalidMarkForPublish = Para publicar una auditoría su nota debe ser al menos C
+auditor.codeAudit.form.error.badExecution = La fecha de ejecución debe ser anterior a cualquier fecha inicio de sus registros de auditorías
+auditor.codeAudit.form.error.notPublishedProject = No puedes crear una auditoría de un proyecto no publicado
+
+

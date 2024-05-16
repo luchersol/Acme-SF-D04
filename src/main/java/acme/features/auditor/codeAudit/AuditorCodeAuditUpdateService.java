@@ -2,12 +2,14 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.views.SelectChoices;
 import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
@@ -68,6 +70,18 @@ public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Audit
 			Boolean repeatedCode = ca == null || object.getId() == ca.getId();
 			super.state(repeatedCode, "code", "auditor.codeAudit.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date maximumDate = this.repository.findMaximumValidExecutionDate(object.getId());
+			Boolean validExecution = object.getExecution() != null && MomentHelper.isAfter(maximumDate, object.getExecution());
+			super.state(validExecution, "execution", "auditor.codeAudit.form.error.badExecution");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		}
+
 		super.validateSpam(object);
 	}
 
