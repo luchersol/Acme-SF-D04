@@ -59,8 +59,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		object = this.repository.findOneProjectById(id);
 		manager = object == null ? null : object.getManager();
 		status = object != null;
-		status = status && object.getDraftMode();
-		status = status && super.getRequest().getPrincipal().hasRole(manager);
+		status = status && object.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -3,6 +3,8 @@ package acme.entities.moneyExchange;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -15,6 +17,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "currency, rate")
+})
 public class MoneyRate extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
