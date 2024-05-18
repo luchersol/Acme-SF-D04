@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,11 +28,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code"), @Index(columnList = "id, draft_mode"), @Index(columnList = "type, auditor_id,draft_mode")
+})
 public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@NotNull
+	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 	@Valid
