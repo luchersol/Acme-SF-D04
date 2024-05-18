@@ -1,8 +1,9 @@
 key,code,creation-moment,details,difficulty-level,update-moment,link,estimated-total-time,draft-mode,key:developer,key:project
-training-module-01,A-001,2020/07/08 10:00,Detalles del módulo 1,BASIC,2021/07/08 00:00,http://ejemplo.com/modulo1,10.0,false,developer-01,project-01
-training-module-02,B-002,2019/07/08 00:00,Detalles del módulo 2,INTERMEDIATE,2021/07/08 00:00,http://ev.us.es,20.0,false,developer-01,project-01
-training-module-03,C-003,2020/07/08 23:59,a,ADVANCED,2021/07/08 00:00,http://ejemplo.com/modulo3,30.0,false,developer-01,project-01
+training-module-01,A-001,2020/07/08 10:00,Detalles del módulo 1,BASIC,2021/07/08 00:00,http://ejemplo.com/modulo1,10.0,true,developer-01,project-01
+training-module-02,B-002,2019/07/08 00:00,Detalles del módulo 2,INTERMEDIATE,2021/07/08 00:00,http://ev.us.es,20.0,true,developer-02,project-01
+training-module-03,C-003,2020/07/08 23:59,a,ADVANCED,2021/07/08 00:00,http://ejemplo.com/modulo3,30.0,false,developer-02,project-01
 training-module-04,D-004,2018/07/08 11:32,"<script>alert(""Hola"")</script>",BASIC,2019/07/08 00:00,http://ejemplo.com/modulo4,40,false,developer-01,project-01
 training-module-05,E-005,2020/07/08 00:00,Detalles del módulo 5,ADVANCED,2021/01/04 10:00,http://ejemplo.com/modulo5,50,false,developer-01,project-02
-training-module-06,F-006,2020/07/08 10:00,Detalles del módulo 6,ADVANCED,2021/07/08 00:00,http://ejemplo.com/modulo6,60,false,developer-01,project-02
-training-module-07,F-008,2020/07/08 10:00,Detalles del módulo 7,BASIC,2021/07/08 00:00,http://ejemplo.com/modulo6,45,false,developer-01,project-02
+training-module-06,F-006,2020/07/08 10:00,Detalles del módulo 6,ADVANCED,2021/07/08 00:00,http://ejemplo.com/modulo6,60,false,developer-02,project-02
+training-module-07,F-007,2020/07/08 10:00,Detalles del módulo 7,ADVANCED,2021/07/08 00:00,http://ejemplo.com/modulo6,60,true,developer-01,project-02
+training-module-08,F-008,2020/07/08 10:00,Detalles del módulo 8,BASIC,2021/07/08 00:00,http://ejemplo.com/modulo6,45,true,developer-01,project-02

@@ -78,9 +78,10 @@ public class DeveloperTrainingModulePublishService extends AbstractAntiSpamServi
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		// Validate updateMoment
-		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
+			super.state(state, "code", "developer.training-module.form.error.duplicated");
+		}
 
 		// Validate Training Modules with Training Session
 		super.state(!this.repository.findManyTrainingSessionsByMasterId(object.getId()).isEmpty(), "code", "developer.training-module.form.error.publish");

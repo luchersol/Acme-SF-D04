@@ -29,10 +29,12 @@ public class DeveloperTrainingSessionPublishService extends AbstractAntiSpamServ
 		boolean status;
 		int trainingSessionId;
 		TrainingModule trainingModule;
+		Developer developer;
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(trainingSessionId);
-		status = trainingModule != null && trainingModule.getDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		developer = trainingModule == null ? null : trainingModule.getDeveloper();
+		status = developer != null && trainingModule != null && trainingModule.getDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -58,9 +60,12 @@ public class DeveloperTrainingSessionPublishService extends AbstractAntiSpamServ
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
+			super.state(state, "code", "developer.training-session.form.error.duplicated");
+		}
 		// Validate time period
-		// Validate time period
-		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
+		if (!super.getBuffer().getErrors().hasErrors("timeStart") && object.getTimeStart() != null && object.getTimeEnd() != null && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
 
 			Long moment = MomentHelper.getCurrentMoment().getTime();
 			Date oneWeekAhead = new Date(moment + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
@@ -72,7 +77,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractAntiSpamServ
 			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
 			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
 		}
-
 		super.validateSpam(object);
 	}
 

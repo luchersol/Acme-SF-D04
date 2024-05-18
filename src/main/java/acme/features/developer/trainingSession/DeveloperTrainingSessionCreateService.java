@@ -43,7 +43,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		status = trainingModule != null && trainingModule.getDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -88,7 +88,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 		}
 
 		// Validate time period
-		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
+		if (!super.getBuffer().getErrors().hasErrors("timeStart") && object.getTimeStart() != null && object.getTimeEnd() != null && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
 
 			Long moment = MomentHelper.getCurrentMoment().getTime();
 			Date oneWeekAhead = new Date(moment + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time

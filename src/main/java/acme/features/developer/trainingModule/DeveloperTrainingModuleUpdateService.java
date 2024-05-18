@@ -80,8 +80,10 @@ public class DeveloperTrainingModuleUpdateService extends AbstractAntiSpamServic
 		assert object != null;
 
 		// Validate updateMoment
-		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
+			super.state(state, "code", "developer.training-module.form.error.duplicated");
+		}
 
 		super.validateSpam(object);
 	}

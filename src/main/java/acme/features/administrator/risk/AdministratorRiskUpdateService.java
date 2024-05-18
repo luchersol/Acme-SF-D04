@@ -42,7 +42,10 @@ public class AdministratorRiskUpdateService extends AbstractAntiSpamService<Admi
 	@Override
 	public void validate(final Risk object) {
 		assert object != null;
-
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			boolean state = !this.repository.existsOtherByCodeAndId(object.getReference(), object.getId());
+			super.state(state, "reference", "administrator.risk.form.error.duplicated");
+		}
 		super.validateSpam(object);
 	}
 

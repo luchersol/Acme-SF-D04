@@ -35,7 +35,7 @@ developer.training-module.form.error.duplicated = This reference is not availabl
 developer.training-module.form.error.publish = You cannot publish without associated sessions
 developer.training-module.form.error.invalid-updateMoment = It must be after the creation moment
 developer.training-module.form.error.allpublish = Associated sessions not publish
-
+developer.training-module.form.error.duplicated-code = This reference is not available
 
 developer.training-module.form.button.activities = Training Sessions
 developer.training-module.form.button.update = Update

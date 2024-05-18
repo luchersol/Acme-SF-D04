@@ -35,6 +35,7 @@ developer.training-module.form.error.duplicated = Esta referencia no está libre
 developer.training-module.form.error.publish = No puedes publicar sin sesiones asociadas
 developer.training-module.form.error.invalid-updateMoment = Tiene que ser despues del momento de creacion
 developer.training-module.form.error.allpublish = Sesiones asociadas no publicadas
+developer.training-module.form.error.duplicated-code = Esta referencia no está libre
 
 developer.training-module.form.placeholder.estimatedTotalTime = 0.00
 
