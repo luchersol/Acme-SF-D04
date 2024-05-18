@@ -56,11 +56,11 @@ public class ClientProgressLogPublishService extends AbstractAntiSpamService<Cli
 	public void validate(final ProgressLog progressLog) {
 		assert progressLog != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-			ProgressLog existing;
+		boolean state;
 
-			existing = this.repository.findOneProgressLogByRecordId(progressLog.getRecordId());
-			super.state(existing == null || existing.getId() == progressLog.getId(), "recordId", "client.progress-log.form.error.code");
+		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+			state = !this.repository.existsOtherByCodeAndId(progressLog.getRecordId(), progressLog.getId());
+			super.state(state, "recordId", "client.progress-log.form.error.code");
 		}
 
 		super.validateSpam(progressLog);

@@ -72,10 +72,8 @@ public class ClientContractCreateService extends AbstractAntiSpamService<Client,
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null, "code", "client.contract.form.error.code");
+			state = !this.repository.existsByCode(contract.getCode());
+			super.state(state, "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {

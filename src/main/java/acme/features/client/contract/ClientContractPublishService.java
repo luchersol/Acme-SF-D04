@@ -76,10 +76,8 @@ public class ClientContractPublishService extends AbstractAntiSpamService<Client
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null || existing.getId() == contract.getId(), "code", "client.contract.form.error.code");
+			state = !this.repository.existsOtherByCodeAndId(contract.getCode(), contract.getId());
+			super.state(state, "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
@@ -93,8 +91,7 @@ public class ClientContractPublishService extends AbstractAntiSpamService<Client
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			Collection<Money> budgets = this.repository.areAllBudgetContractExcedCostProject(contract.getProject().getId());
-			state = budgets.isEmpty() && contract.getBudget().getAmount() < contract.getProject().getCost().getAmount()
-				|| budgets.stream().map(x -> x.getAmount()).mapToDouble(x -> x.doubleValue()).sum() + contract.getBudget().getAmount() < contract.getProject().getCost().getAmount();
+			state = budgets.stream().map(x -> x.getAmount()).mapToDouble(x -> x.doubleValue()).sum() + contract.getBudget().getAmount() < contract.getProject().getCost().getAmount();
 			super.state(state, "budget", "client.contract.form.error.budgetExcedCostProject");
 		}
 		super.validateSpam(contract);
