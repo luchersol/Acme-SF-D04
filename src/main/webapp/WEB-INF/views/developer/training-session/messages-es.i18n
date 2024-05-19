@@ -35,5 +35,5 @@ developer.training-session.form.label.link = Enlace
 developer.training-session.list.button.create = Crear
 
 developer.training-session.form.error.duplicated = Esta referencia no está libre
-developer.training-session.form.error.notOneWeekAhead = At least one week after the current date.
+developer.training-session.form.error.notOneWeekAhead = Al menos una semana despúes de la fecha de creación del modulo
 developer.training-session.form.error.notOneWeekLong = Tiene que tener de periodo minimo 1 semana 

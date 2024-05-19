@@ -57,6 +57,7 @@ public class TrainingSession extends AbstractEntity {
 	private String				link;
 
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 

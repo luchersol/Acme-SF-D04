@@ -12,6 +12,7 @@
 
 package acme.features.developer.trainingSession;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +80,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
-
+		Long moment = object.getTrainingModule().getCreationMoment().getTime();
 		// Validate code
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingSession existing;
@@ -88,20 +89,25 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 		}
 
 		// Validate time period
-		if (!super.getBuffer().getErrors().hasErrors("timeStart") && object.getTimeStart() != null && object.getTimeEnd() != null && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
-
-			Long moment = MomentHelper.getCurrentMoment().getTime();
-			Date oneWeekAhead = new Date(moment + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
-			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + 7 * 24 * 60 * 60 * 1000); // One week period from the start time
-
-			boolean isOneWeekAhead = object.getTimeStart().after(oneWeekAhead);
-			boolean isOneWeekLong = object.getTimeEnd().after(oneWeekPeriod);
-
+		if (!super.getBuffer().getErrors().hasErrors("timeStart")) {
+			long amount = 7;
+			ChronoUnit unit = ChronoUnit.DAYS;
+			long offset = amount * unit.getDuration().toMillis();
+			Date oneWeekAhead = new Date(moment + offset);
+			boolean isOneWeekAhead = MomentHelper.isAfterOrEqual(object.getTimeStart(), oneWeekAhead);
 			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
+			long amount = 7;
+			ChronoUnit unit = ChronoUnit.DAYS;
+			long offset = amount * unit.getDuration().toMillis();
+			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + offset);
+			boolean isOneWeekLong = MomentHelper.isAfterOrEqual(object.getTimeEnd(), oneWeekPeriod);
 			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
 		}
 
 		super.validateSpam(object);
+
 	}
 
 	@Override
