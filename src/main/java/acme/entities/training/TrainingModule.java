@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -28,6 +30,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code"), @Index(columnList = "code, id"), @Index(columnList = "developer_id, draft_mode"), @Index(columnList = "id, draft_mode"), @Index(columnList = "developer_id, update_moment")
+})
+
 public class TrainingModule extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -51,6 +57,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
+	@Column(name = "update_moment")
 	private Date				updateMoment;
 
 	@URL
@@ -71,6 +78,7 @@ public class TrainingModule extends AbstractEntity {
 	private Developer			developer;
 
 	@NotNull
+	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 
