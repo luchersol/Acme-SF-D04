@@ -34,3 +34,4 @@ sponsor.invoice.form.button.create = Crear
 sponsor.invoice.form.error.duplicated = Este código no está libre
 sponsor.invoice.form.error.too-close = La fecha de vencimiento debe ser anterior a la de hoy 
 sponsor.invoice.form.error.negative-salary = La cantidad debe ser positiva
+sponsor.invoice.form.error.invalid-currency = Por favor, elige un tipo de moneda que esté en la configuración del sistema.
