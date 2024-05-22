@@ -1,6 +1,8 @@
 
 package acme.features.auditor.auditRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,18 +71,23 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 	@Override
 	public void unbind(final AuditRecord object) {
+
 		assert object != null;
 
+		Collection<CodeAudit> codeAudits;
+		SelectChoices choices;
 		SelectChoices marks;
 
 		marks = SelectChoices.from(Mark.class, object.getMark());
 
 		Dataset dataset;
-
+		codeAudits = this.repository.findCodeAudits();
+		choices = SelectChoices.from(codeAudits, "code", object.getCodeAudit());
 		dataset = super.unbind(object, "code", "draftMode", "startDate", "endDate", "link", "mark");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
-		dataset.put("codeAudit", object.getCodeAudit());
+		dataset.put("codeAudit", choices.getSelected().getKey());
+		dataset.put("codeAudits", choices);
+
 		dataset.put("mark", marks.getSelected().getKey());
 		dataset.put("marks", marks);
 
