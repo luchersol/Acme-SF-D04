@@ -57,4 +57,10 @@ public interface ClientContractRepository extends AbstractRepository {
 
 	@Query("select count(c) > 0 from Contract c where c.code = :code")
 	Boolean existsByCode(String code);
+
+	@Query("select sys.acceptedCurrencies from SystemConfiguration sys")
+	String findAcceptedCurrencies();
+
+	@Query("SELECT count(p) > 0 FROM Project p WHERE p.id = :id and p.draftMode = true")
+	Boolean ProjectIsDraftMode(int id);
 }

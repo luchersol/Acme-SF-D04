@@ -38,3 +38,4 @@ client.contract.form.error.code = El código ya está cogido
 client.contract.form.error.publish = No puedes publicar sin registros asociados
 client.contract.form.error.allpublish = Registros de progreso asociados no publicados 
 client.contract.form.error.budgetExcedCostProject = Presupuesto supera el coste del proyecto
+client.contract.form.error.invalid-currency = La divisa debe estar en la configuración del sistema

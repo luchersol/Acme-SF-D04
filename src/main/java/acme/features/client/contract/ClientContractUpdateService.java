@@ -1,6 +1,7 @@
 
 package acme.features.client.contract;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,16 @@ public class ClientContractUpdateService extends AbstractAntiSpamService<Client,
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(contract.getBudget().getCurrency());
+			super.state(state, "budget", "client.contract.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.ProjectIsDraftMode(contract.getProject().getId());
+			super.state(!isDraftMode, "project", "client.contract.form.error.project");
 		}
 
 		super.validateSpam(contract);

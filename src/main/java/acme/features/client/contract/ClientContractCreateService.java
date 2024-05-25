@@ -80,6 +80,11 @@ public class ClientContractCreateService extends AbstractAntiSpamService<Client,
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.ProjectIsDraftMode(contract.getProject().getId());
+			super.state(!isDraftMode, "project", "client.contract.form.error.project");
+		}
+
 		super.validateSpam(contract);
 
 	}
