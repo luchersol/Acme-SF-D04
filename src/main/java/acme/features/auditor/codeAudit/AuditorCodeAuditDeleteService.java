@@ -10,6 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.audits.AuditRecord;
+import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
@@ -78,12 +79,20 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 
 		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices types;
+
+		types = SelectChoices.from(AuditType.class, object.getType());
+
 		Dataset dataset;
 		projects = this.repository.findPublishedProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "link", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "correctiveActions", "link", "draftMode", "mark");
+
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+
+		dataset.put("type", types.getSelected().getKey());
+		dataset.put("types", types);
 
 		super.getResponse().addData(dataset);
 	}
