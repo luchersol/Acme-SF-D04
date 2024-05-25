@@ -56,7 +56,7 @@ public class AdministratorBannerCreateService extends AbstractAntiSpamService<Ad
 
 		if (!super.getBuffer().getErrors().hasErrors("displayEnd")) {
 			boolean notNull = object.getDisplayEnd() != null && object.getDisplayStart() != null;
-			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getDisplayEnd(), object.getDisplayStart(), 1, ChronoUnit.WEEKS);
+			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getDisplayEnd(), object.getDisplayStart(), 7, ChronoUnit.DAYS);
 			super.state(goodDuration, "displayEnd", "administrator.banner.form.error.notEnoughDuration");
 		}
 		super.validateSpam(object);
