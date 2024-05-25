@@ -12,8 +12,7 @@
 
 package acme.components;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +48,8 @@ public class MoneyExchangeService {
 		Double sourceAmount, targetAmount;
 		Map<String, Double> rates;
 		Date updateMoment;
-		LocalDate moment, updateMomentLocalDate;
+		Date moment;
+		Long timeToUpdate;
 		boolean sameDay;
 
 		sys = this.repository.findSystemConfiguration();
@@ -57,9 +57,9 @@ public class MoneyExchangeService {
 		sourceCurrency = source.getCurrency();
 		targetCurrency = sys.getSystemCurrency();
 		updateMoment = sys.getUpdateMoment();
-		moment = LocalDate.now();
-		updateMomentLocalDate = updateMoment == null ? null : updateMoment.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		sameDay = moment.equals(updateMomentLocalDate);
+		timeToUpdate = (long) sys.getTimeToUpdate();
+		moment = new Date();
+		sameDay = MomentHelper.isLongEnough(moment, updateMoment, timeToUpdate, ChronoUnit.DAYS);
 
 		if (sourceCurrency.equals(targetCurrency))
 			return null;

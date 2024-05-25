@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -27,5 +29,9 @@ public class SystemConfiguration extends AbstractEntity {
 	private String				acceptedCurrencies;
 
 	private Date				updateMoment;
+
+	@NotNull
+	@PositiveOrZero
+	private Integer				timeToUpdate;
 
 }

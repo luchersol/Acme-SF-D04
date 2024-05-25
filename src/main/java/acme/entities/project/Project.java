@@ -25,7 +25,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "manager_id, draft_mode"), //
+	@Index(columnList = "manager_id, draftMode"), //
 	@Index(columnList = "code"), //
 	@Index(columnList = "code, id")
 })
@@ -62,7 +62,6 @@ public class Project extends AbstractEntity {
 	private String				link;
 
 	@NotNull
-	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 	@NotNull
