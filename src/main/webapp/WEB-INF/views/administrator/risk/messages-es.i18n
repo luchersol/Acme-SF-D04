@@ -19,6 +19,7 @@ administrator.risk.list.label.link = Enlace
 administrator.risk.form.label.project = Proyecto
 
 administrator.risk.form.error.duplicated = Esta referencia ya está tomada
+administrator.risk.form.error.link.size = Debe tener entre 7 y 255 elementos
 
 administrator.risk.form.button.update = Actualizar
 administrator.risk.form.button.delete = Eliminar

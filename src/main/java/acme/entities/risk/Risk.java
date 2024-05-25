@@ -45,6 +45,8 @@ public class Risk extends AbstractEntity {
 
 	@NotNull
 	@Positive
+	@DecimalMin(value = "0.0", inclusive = true)
+	@DecimalMax(value = "100.0", inclusive = true)
 	private Double				impact;
 
 	@NotNull

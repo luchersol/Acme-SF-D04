@@ -20,11 +20,7 @@ administrator.risk.list.label.link = Link
 administrator.risk.form.label.project = Project
 
 administrator.risk.form.error.duplicated = This reference is already taken
-
-administrator.risk.form.button.update = Update
-administrator.risk.form.button.delete = Delete
-administrator.risk.list.button.create = Create
-
+administrator.risk.form.error.link.size = Must have between 7 and 255 items
 
 administrator.risk.form.button.update = Update
 administrator.risk.form.button.delete = Delete
