@@ -29,3 +29,5 @@ auditor.codeAudit.form.button.auditRecords = Show audit records
 auditor.codeAudit.form.error.notAllAuditRecordArePublished = In order to publish a code audit all its audit records must have been published
 auditor.codeAudit.form.error.duplicated = This code is already in use!
 auditor.codeAudit.form.error.invalidMarkForPublish = In order to publish a code audit its mark must be at least C 
+auditor.codeAudit.form.error.badExecution = Execution date must be after any start date of its audit records
+auditor.codeAudit.form.error.notPublishedProject = You cannot make an audit from a non published project

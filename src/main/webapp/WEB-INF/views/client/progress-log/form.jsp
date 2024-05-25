@@ -19,7 +19,9 @@
 	<acme:input-textbox code="client.progress-log.form.label.recordId" path="recordId"/>
 	<acme:input-double code="client.progress-log.form.label.completeness" path="completeness"/>
 	<acme:input-textbox code="client.progress-log.form.label.comment" path="comment"/>
-	<acme:input-moment code="client.progress-log.form.label.registrationMoment" path="registrationMoment"/>
+	<jstl:if test="${_command != 'create'}">
+		<acme:input-moment readonly="${true}" code="client.progress-log.form.label.registrationMoment" path="registrationMoment"/>
+	</jstl:if>
 	<acme:input-textbox code="client.progress-log.form.label.responsiblePerson" path="responsiblePerson"/>
 	
 		<jstl:choose>

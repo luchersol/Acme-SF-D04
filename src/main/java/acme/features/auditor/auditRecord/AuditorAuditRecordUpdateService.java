@@ -58,7 +58,7 @@ public class AuditorAuditRecordUpdateService extends AbstractAntiSpamService<Aud
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			AuditRecord ar = this.repository.findAuditRecordByCode(object.getCode());
-			Boolean repeatedCode = ar == null || ar != null && object.getId() == ar.getId();
+			Boolean repeatedCode = ar == null || object.getId() == ar.getId();
 			super.state(repeatedCode, "code", "auditor.auditRecord.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {

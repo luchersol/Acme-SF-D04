@@ -72,16 +72,19 @@ public class ClientContractCreateService extends AbstractAntiSpamService<Client,
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null, "code", "client.contract.form.error.code");
+			state = !this.repository.existsByCode(contract.getCode());
+			super.state(state, "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.ProjectIsDraftMode(contract.getProject().getId());
+			super.state(!isDraftMode, "project", "client.contract.form.error.project");
+		}
+
 		super.validateSpam(contract);
 
 	}
@@ -108,7 +111,7 @@ public class ClientContractCreateService extends AbstractAntiSpamService<Client,
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choices = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choices = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "project", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());

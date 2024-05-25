@@ -45,7 +45,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		poor = new Money();
 
 		poor.setAmount(0.0);
-		poor.setCurrency(this.repository.findSystemCurrency().stream().findFirst().orElse(""));
+		poor.setCurrency(this.repository.findSystemConfiguration().getSystemCurrency());
 
 		object = new Sponsorship();
 		object.setDraftMode(true);
@@ -85,13 +85,18 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 			minimumDeadline = MomentHelper.getCurrentMoment();
 			super.state(MomentHelper.isBefore(object.getStartDate(), minimumDeadline), "startDate", "sponsor.sponsorship.form.error.too-close");
+
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
 			Date minimumDeadline;
+			Date maximumDeadline;
 
-			minimumDeadline = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
+			minimumDeadline = MomentHelper.getCurrentMoment();
+			super.state(MomentHelper.isBefore(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close");
+
+			maximumDeadline = object.getStartDate() == null ? null : MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
+			super.state(object.getStartDate() == null || MomentHelper.isAfter(object.getEndDate(), maximumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
 		}
 
 	}
