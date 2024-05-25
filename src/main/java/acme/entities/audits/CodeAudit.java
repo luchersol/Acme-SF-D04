@@ -29,14 +29,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "code"), @Index(columnList = "id, draft_mode"), @Index(columnList = "type, auditor_id,draft_mode")
+	@Index(columnList = "code"), @Index(columnList = "id, draftMode"), // 
+	@Index(columnList = "type, auditor_id,draftMode")
 })
 public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@NotNull
-	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 	@Valid
