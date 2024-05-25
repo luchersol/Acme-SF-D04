@@ -27,13 +27,13 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(indexes = {
-	@Index(columnList = "record_id"), @Index(columnList = "record_id, id")
+	@Index(columnList = "recordId"), @Index(columnList = "recordId, id")
 })
 public class ProgressLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Column(unique = true, name = "record_id")
+	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
 	private String				recordId;
