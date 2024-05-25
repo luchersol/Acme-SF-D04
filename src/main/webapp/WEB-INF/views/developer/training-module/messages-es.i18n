@@ -30,13 +30,13 @@ developer.training-module.list.label.link = Enlace
 developer.training-module.list.label.estimatedTotalTime = Tiempo Total Estimado
 developer.training-module.form.label.project = Proyectos:
 
+developer.training-module.form.placeholder.estimatedTotalTime = 0.00
 
 developer.training-module.form.error.duplicated = Esta referencia no está libre
 developer.training-module.form.error.publish = No puedes publicar sin sesiones asociadas
 developer.training-module.form.error.invalid-updateMoment = Tiene que ser despues del momento de creacion
 developer.training-module.form.error.allpublish = Sesiones asociadas no publicadas
-
-developer.training-module.form.placeholder.estimatedTotalTime = 0.00
+developer.training-module.form.error.link.size = Debe tener entre 7 y 255 elementos
 
 developer.training-module.form.button.activities = Sesiones de entrenamiento
 developer.training-module.form.button.update = Actualizar

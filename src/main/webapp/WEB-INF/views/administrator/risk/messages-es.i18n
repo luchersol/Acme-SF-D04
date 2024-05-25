@@ -1,10 +1,11 @@
 administrator.risk.form.title = Formulario de Riesgo
-administrator.risk.list.title = Listado de mis riesgos
+administrator.risk.list.title = Listado de riesgos
 
 administrator.risk.form.label.reference = Referencia:
 administrator.risk.form.label.identificationDate = Fecha de Identificación:
 administrator.risk.form.label.impact = Impacto:
 administrator.risk.form.label.probability = Probabilidad:
+administrator.risk.form.label.riskFactor = Factor de Riesgo:
 administrator.risk.form.label.description = Descripción:
 administrator.risk.form.label.link = Enlace:
 administrator.risk.form.button.create = Crear
@@ -18,6 +19,7 @@ administrator.risk.list.label.link = Enlace
 administrator.risk.form.label.project = Proyecto
 
 administrator.risk.form.error.duplicated = Esta referencia ya está tomada
+administrator.risk.form.error.link.size = Debe tener entre 7 y 255 elementos
 
 administrator.risk.form.button.update = Actualizar
 administrator.risk.form.button.delete = Eliminar
