@@ -18,7 +18,9 @@
 <acme:form>
 	<acme:input-textbox code="client.contract.form.label.code" path="code"/>
 	<acme:input-select code="client.contract.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-moment code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
+	<jstl:if test="${_command != 'create'}">
+		<acme:input-moment readonly="${true}" code="client.contract.form.label.instantiationMoment" path="instantiationMoment"/>
+	</jstl:if>
 	<acme:input-textbox code="client.contract.form.label.providerName" path="providerName"/>
 	<acme:input-textbox code="client.contract.form.label.customerName" path="customerName"/>
 	<acme:input-textbox code="client.contract.form.label.goal" path="goal"/>
