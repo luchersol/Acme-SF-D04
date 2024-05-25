@@ -12,8 +12,7 @@
 
 package acme.components;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -49,24 +48,24 @@ public class MoneyExchangeService {
 		Double sourceAmount, targetAmount;
 		Map<String, Double> rates;
 		Date updateMoment;
-		LocalDate moment, updateMomentLocalDate;
-		boolean sameDay;
+		Date moment;
+		Long timeToUpdate;
+		boolean isTimeToUpdate;
 
 		sys = this.repository.findSystemConfiguration();
 		sourceAmount = source.getAmount();
 		sourceCurrency = source.getCurrency();
 		targetCurrency = sys.getSystemCurrency();
 		updateMoment = sys.getUpdateMoment();
-		moment = LocalDate.now();
-		updateMomentLocalDate = updateMoment == null ? null : updateMoment.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		sameDay = moment.equals(updateMomentLocalDate);
+		timeToUpdate = (long) sys.getTimeToUpdate();
+		moment = new Date();
+		isTimeToUpdate = MomentHelper.isLongEnough(moment, updateMoment, timeToUpdate, ChronoUnit.DAYS);
 
 		if (sourceCurrency.equals(targetCurrency))
 			return null;
 
 		try {
-			// Cambiar true a sameDay antesde la entrega para realizar llamadas a la API
-			if (true)
+			if (!isTimeToUpdate)
 				rates = this.repository.findAllMoneyRate(sourceCurrency, targetCurrency).stream().collect(Collectors.toMap(MoneyRate::getCurrency, MoneyRate::getRate));
 			else {
 				List<MoneyRate> ratesSave = this.repository.findAllMoneyRate();
@@ -92,6 +91,8 @@ public class MoneyExchangeService {
 
 				this.repository.saveAll(ratesSave);
 				this.repository.save(sys);
+
+				MomentHelper.sleep(1000);
 			}
 
 			Double rate1, rate2;
@@ -104,7 +105,6 @@ public class MoneyExchangeService {
 				result.setCurrency(targetCurrency);
 			}
 
-			MomentHelper.sleep(1000);
 		} catch (final Throwable oops) {
 			result = null;
 		}
