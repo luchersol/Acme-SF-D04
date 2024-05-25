@@ -9,7 +9,7 @@ training-session-07,TS-C-007,2023/07/24 15:00,2023/12/13 01:03,Lorem ipsum dolor
 training-session-08,TS-C-008,2022/08/05 23:59,2022/09/01 10:00,Sevilla,Lorem ipsum dolor sit amett consectetur adipiscing elitt sed do eiusmod te,instructor1@ejemplo.com,http://example.org?a=1&b=2,true,training-module-01
 training-session-09,TS-C-009,2022/08/06 00:00,2200/12/31 23:58,Madrid,Instructor 1,instructor2@ejemplo.com,http://example.org?a&b,true,training-module-02
 training-session-10,TS-C-010,2022/08/06 00:01,2200/12/31 23:59,Barcelona,你好,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-03
-training-session-11,TS-C-011,2022/08/06 00:01,2022/08/06 00:01,Barcelona,你好,instructor3@ejemplo.com,http://example.org/a,false,training-module-04
+training-session-11,TS-C-011,2022/08/06 00:01,2022/08/16 00:01,Barcelona,你好,instructor3@ejemplo.com,http://example.org/a,false,training-module-04
 training-session-12,TS-C-012,2023/07/24 15:00,2200/12/31 23:58,Barcelona,你好,instructor3@ejemplo.com,http://example.org/a/b?a&b,false,training-module-05
 training-session-13,TS-C-013,2023/07/24 15:00,2200/12/31 23:59,Barcelona,你好dfdsf,instructor3@ejemplo.com,http://ejemplo.com,false,training-module-06
 training-session-14,TS-C-014,2023/07/24 15:00,2200/12/31 23:59,Barcelona,你好dfdd,instructor4@ejemplo.com,http://ejemplo23.com,false,training-module-07
