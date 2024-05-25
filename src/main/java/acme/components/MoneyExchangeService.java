@@ -91,6 +91,8 @@ public class MoneyExchangeService {
 
 				this.repository.saveAll(ratesSave);
 				this.repository.save(sys);
+
+				MomentHelper.sleep(1000);
 			}
 
 			Double rate1, rate2;
@@ -103,7 +105,6 @@ public class MoneyExchangeService {
 				result.setCurrency(targetCurrency);
 			}
 
-			MomentHelper.sleep(1000);
 		} catch (final Throwable oops) {
 			result = null;
 		}
