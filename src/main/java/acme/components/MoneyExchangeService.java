@@ -50,7 +50,7 @@ public class MoneyExchangeService {
 		Date updateMoment;
 		Date moment;
 		Long timeToUpdate;
-		boolean sameDay;
+		boolean isTimeToUpdate;
 
 		sys = this.repository.findSystemConfiguration();
 		sourceAmount = source.getAmount();
@@ -59,13 +59,13 @@ public class MoneyExchangeService {
 		updateMoment = sys.getUpdateMoment();
 		timeToUpdate = (long) sys.getTimeToUpdate();
 		moment = new Date();
-		sameDay = MomentHelper.isLongEnough(moment, updateMoment, timeToUpdate, ChronoUnit.DAYS);
+		isTimeToUpdate = MomentHelper.isLongEnough(moment, updateMoment, timeToUpdate, ChronoUnit.DAYS);
 
 		if (sourceCurrency.equals(targetCurrency))
 			return null;
 
 		try {
-			if (true)
+			if (!isTimeToUpdate)
 				rates = this.repository.findAllMoneyRate(sourceCurrency, targetCurrency).stream().collect(Collectors.toMap(MoneyRate::getCurrency, MoneyRate::getRate));
 			else {
 				List<MoneyRate> ratesSave = this.repository.findAllMoneyRate();
