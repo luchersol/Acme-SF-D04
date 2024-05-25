@@ -64,18 +64,18 @@ public class AuditorAuditRecordPublishService extends AbstractAntiSpamService<Au
 			super.state(repeatedCode, "code", "auditor.auditRecord.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
-			boolean notNull = object.getStartDate() != null && object.getCodeAudit().getExecution() != null;
+			boolean notNull = object.getCodeAudit().getExecution() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getStartDate(), object.getCodeAudit().getExecution());
 			super.state(timeConcordance, "startDate", "auditor.auditRecord.form.error.badStartDate");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			boolean notNull = object.getEndDate() != null && object.getStartDate() != null;
+			boolean notNull = object.getStartDate() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getEndDate(), object.getStartDate());
 			super.state(timeConcordance, "endDate", "auditor.auditRecord.form.error.badTimeConcordance");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			boolean notNull = object.getEndDate() != null && object.getStartDate() != null;
+			boolean notNull = object.getStartDate() != null;
 			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getEndDate(), object.getStartDate(), 1, ChronoUnit.HOURS);
 			super.state(goodDuration, "endDate", "auditor.auditRecord.form.error.notEnoughDuration");
 		}
