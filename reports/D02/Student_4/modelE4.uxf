@@ -78,7 +78,7 @@ Sponsorship
 + typeOfSponsorship: TypeOfSponsorship {NotNull}
 + email: String {Email}
 + link: String {Link}
-
++ draftMode: boolean
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -138,6 +138,7 @@ Invoice
 + tax: Double {PositiveOrZero, NotNull}
 + link: String {Link}
 + /totalAmount: Money
++ draftMode: boolean
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -246,7 +247,7 @@ bg=gray</panel_attributes>
       <x>45</x>
       <y>441</y>
       <w>342</w>
-      <h>144</h>
+      <h>126</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Notice 
@@ -266,12 +267,12 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>162</x>
-      <y>576</y>
+      <y>558</y>
       <w>99</w>
-      <h>72</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;60.0;90.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -286,14 +287,14 @@ SponsorForm
 --
 + totalInvoicesWithTaxLessThanOrEqualTo21: Integer
 + totalSponsorshipWithLink: Integer
-+ averageAmountOfTheSponsorships: Money
-+ deviationAmountOfTheSponsorships: Money
-+ minimumAmountOfTheSponsorships: Money
-+ maximumAmountOfTheSponsorships: Money
-+ averageQuantityOfTheInvoices: Double
-+ deviationQuantityOfTheInvoices: Double
-+ minimumQuantityOfTheInvoices: Double
-+ maximumQuantityOfTheInvoices: Double
++ averageAmountOfTheSponsorships: List&lt;Money&gt;
++ deviationAmountOfTheSponsorships: List&lt;Money&gt;
++ minimumAmountOfTheSponsorships: List&lt;Money&gt;
++ maximumAmountOfTheSponsorships: List&lt;Money&gt;
++ averageQuantityOfTheInvoices: List&lt;Money&gt;
++ deviationQuantityOfTheInvoices: List&lt;Money&gt;
++ minimumQuantityOfTheInvoices: List&lt;Money&gt;
++ maximumQuantityOfTheInvoices: List&lt;Money&gt;
 
 bg=green</panel_attributes>
     <additional_attributes/>

@@ -42,4 +42,9 @@ public interface SponsorInvoiceRepository extends AbstractRepository {
 	@Query("select i from Invoice i where i.sponsorship.id = :masterId")
 	Collection<Invoice> findManyInvoicesByMasterId(int masterId);
 
+	@Query("select count(i) = 0 from Invoice i where i.code = :code and i.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
+
+	@Query("select sys.acceptedCurrencies from SystemConfiguration sys")
+	String findAcceptedCurrencies();
 }
