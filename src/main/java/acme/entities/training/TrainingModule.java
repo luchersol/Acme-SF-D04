@@ -12,11 +12,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -31,7 +32,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "code"), @Index(columnList = "code, id"), @Index(columnList = "developer_id, draft_mode"), @Index(columnList = "id, draft_mode"), @Index(columnList = "developer_id, update_moment")
+	@Index(columnList = "code"), @Index(columnList = "code, id"), @Index(columnList = "developer_id, draftMode"), @Index(columnList = "id, draftMode"), @Index(columnList = "developer_id, updateMoment")
 })
 
 public class TrainingModule extends AbstractEntity {
@@ -57,14 +58,14 @@ public class TrainingModule extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
-	@Column(name = "update_moment")
 	private Date				updateMoment;
 
 	@URL
 	private String				link;
 
 	@NotNull
-	@PositiveOrZero
+	@DecimalMin(value = "0.0", inclusive = true)
+	@DecimalMax(value = "100.0", inclusive = true)
 	private Double				estimatedTotalTime;
 
 	@NotNull
@@ -78,7 +79,6 @@ public class TrainingModule extends AbstractEntity {
 	private Developer			developer;
 
 	@NotNull
-	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 

@@ -13,7 +13,9 @@
 package acme.features.developer.trainingSession;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,8 +90,14 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 			super.state(existing == null, "code", "developer.training-session.form.error.duplicated");
 		}
 
-		// Validate time period
 		if (!super.getBuffer().getErrors().hasErrors("timeStart")) {
+			Date minDate = new GregorianCalendar(2000, Calendar.JANUARY, 1, 0, 0, 0).getTime();
+			Date maxDate = new GregorianCalendar(2200, Calendar.DECEMBER, 31, 23, 59, 59).getTime();
+			Date timeStart = object.getTimeStart();
+
+			super.state(MomentHelper.isAfterOrEqual(timeStart, minDate), "timeStart", "developer.training-session.form.error.timeStart.min");
+			super.state(MomentHelper.isBeforeOrEqual(timeStart, maxDate), "timeStart", "developer.training-session.form.error.timeStart.max");
+
 			long amount = 7;
 			ChronoUnit unit = ChronoUnit.DAYS;
 			long offset = amount * unit.getDuration().toMillis();
@@ -97,6 +105,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 			boolean isOneWeekAhead = MomentHelper.isAfterOrEqual(object.getTimeStart(), oneWeekAhead);
 			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
 		}
+
 		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
 			long amount = 7;
 			ChronoUnit unit = ChronoUnit.DAYS;
@@ -104,6 +113,21 @@ public class DeveloperTrainingSessionCreateService extends AbstractAntiSpamServi
 			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + offset);
 			boolean isOneWeekLong = MomentHelper.isAfterOrEqual(object.getTimeEnd(), oneWeekPeriod);
 			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("timeEnd")) {
+			// Validate timeEnd
+			Date minDate = new GregorianCalendar(2000, Calendar.JANUARY, 1, 0, 0, 0).getTime();
+			Date maxDate = new GregorianCalendar(2200, Calendar.DECEMBER, 31, 23, 59, 59).getTime();
+			Date timeEnd = object.getTimeEnd();
+			super.state(MomentHelper.isAfterOrEqual(timeEnd, minDate), "timeEnd", "developer.training-session.form.error.timeEnd.min");
+			super.state(MomentHelper.isBeforeOrEqual(timeEnd, maxDate), "timeEnd", "developer.training-session.form.error.timeEnd.max");
+
+		}
+		if (!super.getBuffer().getErrors().hasErrors("link") && !object.getLink().isEmpty()) {
+			// Validate link length
+			int linkLength = object.getLink().length();
+			super.state(linkLength >= 7 && linkLength <= 255, "link", "developer.training-session.form.error.link.size");
 		}
 
 		super.validateSpam(object);

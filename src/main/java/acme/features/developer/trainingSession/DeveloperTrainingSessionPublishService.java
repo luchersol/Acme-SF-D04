@@ -1,14 +1,10 @@
 
 package acme.features.developer.trainingSession;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.components.AbstractAntiSpamService;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
@@ -61,28 +57,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractAntiSpamServ
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
-		Long moment = object.getTrainingModule().getCreationMoment().getTime();
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
-			super.state(state, "code", "developer.training-session.form.error.duplicated");
-		}
-		// Validate time period
-		if (!super.getBuffer().getErrors().hasErrors("timeStart")) {
-			long amount = 7;
-			ChronoUnit unit = ChronoUnit.DAYS;
-			long offset = amount * unit.getDuration().toMillis();
-			Date oneWeekAhead = new Date(moment + offset);
-			boolean isOneWeekAhead = MomentHelper.isAfterOrEqual(object.getTimeStart(), oneWeekAhead);
-			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
-			long amount = 7;
-			ChronoUnit unit = ChronoUnit.DAYS;
-			long offset = amount * unit.getDuration().toMillis();
-			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + offset);
-			boolean isOneWeekLong = MomentHelper.isAfterOrEqual(object.getTimeEnd(), oneWeekPeriod);
-			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
-		}
 		super.validateSpam(object);
 	}
 

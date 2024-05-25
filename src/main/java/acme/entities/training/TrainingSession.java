@@ -15,6 +15,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -56,6 +57,7 @@ public class TrainingSession extends AbstractEntity {
 
 	@NotBlank
 	@Email
+	@Size(min = 6, max = 254)
 	private String				contactEmail;
 
 	@URL
@@ -67,7 +69,6 @@ public class TrainingSession extends AbstractEntity {
 	private TrainingModule		trainingModule;
 
 	@NotNull
-	@Column(name = "draft_mode")
 	private Boolean				draftMode;
 
 }

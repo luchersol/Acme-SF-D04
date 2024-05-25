@@ -64,26 +64,12 @@ public class DeveloperTrainingModulePublishService extends AbstractAntiSpamServi
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
-		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
-			super.state(state, "code", "developer.training-module.form.error.duplicated");
-		}
-
-		// Validate Training Modules with Training Session
 		super.state(!this.repository.findManyTrainingSessionsByMasterId(object.getId()).isEmpty(), "code", "developer.training-module.form.error.publish");
 		boolean allSessionsInDraftMode = this.repository.areAllTrainingSessionsPublished(object.getId());
 		super.state(allSessionsInDraftMode, "code", "developer.training-module.form.error.allpublish");
@@ -112,11 +98,11 @@ public class DeveloperTrainingModulePublishService extends AbstractAntiSpamServi
 
 		projects = this.repository.findAllProjectPublish();
 
-		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");
-		dataset.put("project", choicesProject.getSelected().getKey());
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
+		dataset.put("project", object.getProject());
 		dataset.put("projects", choicesProject);
 		dataset.put("difficultyLevel", choicesDifficulty.getSelected().getKey());
 		dataset.put("difficultyLevels", choicesDifficulty);
