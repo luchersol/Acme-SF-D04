@@ -60,6 +60,11 @@ public class AuditorCodeAuditCreateService extends AbstractAntiSpamService<Audit
 			super.state(ca == null, "code", "auditor.codeAudit.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		}
+
 		super.validateSpam(object);
 	}
 
