@@ -2,11 +2,13 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.views.SelectChoices;
 import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
@@ -67,10 +69,10 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 		CodeAudit ca = this.repository.findCodeAuditWithCode(object.getCode());
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
+			super.state(ca == null || ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+			Mark mark = this.repository.findCodeAuditMark(object.getId());
 			Boolean isPosibleMark = mark != null && mark.toString() != "F_MINUS" && mark.toString() != "F";
 			super.state(isPosibleMark, "mark", "auditor.codeAudit.form.error.invalidMarkForPublish");
 			object.setMark(mark);
@@ -81,6 +83,17 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 			super.state(notPublishedAuditRecord == 0, "mark", "auditor.codeAudit.form.error.notAllAuditRecordArePublished");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date maximumDate = this.repository.findMaximumValidExecutionDate(object.getId());
+			Boolean validExecution = maximumDate == null || MomentHelper.isAfter(maximumDate, object.getExecution());
+			super.state(validExecution, "execution", "auditor.codeAudit.form.error.badExecution");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		}
+
 		super.validateSpam(object);
 	}
 
@@ -88,7 +101,7 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 	public void perform(final CodeAudit object) {
 		assert object != null;
 		object.setDraftMode(false);
-		Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+		Mark mark = this.repository.findCodeAuditMark(object.getId());
 		object.setMark(mark);
 		this.repository.save(object);
 	}

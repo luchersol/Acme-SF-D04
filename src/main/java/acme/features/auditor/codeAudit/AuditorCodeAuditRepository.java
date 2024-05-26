@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -17,8 +18,8 @@ import acme.roles.Auditor;
 @Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
-	@Query("select ar.mark from AuditRecord ar where ar.codeAudit.id = :id AND ar.draftMode = false GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
-	List<Mark> findCodeAuditMark(int id);
+	@Query("select ar.mark from AuditRecord ar where ar.codeAudit.id = :id AND ar.draftMode = false GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC LIMIT 1")
+	Mark findCodeAuditMark(int id);
 
 	@Query("select ca from CodeAudit ca where ca.code = :code")
 	CodeAudit findCodeAuditWithCode(String code);
@@ -46,5 +47,11 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("select count(ar) from AuditRecord ar where ar.codeAudit.id = :codeAuditId and ar.draftMode = true")
 	Integer countNotPublishedAuditRecordsOfCodeAudit(int codeAuditId);
+
+	@Query("select min(ar.startDate) from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
+	Date findMaximumValidExecutionDate(int codeAuditId);
+
+	@Query("select p.draftMode from Project p where p.id = :projectId")
+	Boolean projectIsDraftMode(int projectId);
 
 }

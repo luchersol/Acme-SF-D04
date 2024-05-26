@@ -2,12 +2,13 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.views.SelectChoices;
 import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
@@ -65,20 +66,30 @@ public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Audit
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			CodeAudit ca = this.repository.findCodeAuditWithCode(object.getCode());
-			Boolean repeatedCode = ca == null || ca != null && object.getId() == ca.getId();
+			Boolean repeatedCode = ca == null || object.getId() == ca.getId();
 			super.state(repeatedCode, "code", "auditor.codeAudit.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date maximumDate = this.repository.findMaximumValidExecutionDate(object.getId());
+			Boolean validExecution = maximumDate == null || MomentHelper.isAfter(maximumDate, object.getExecution());
+			super.state(validExecution, "execution", "auditor.codeAudit.form.error.badExecution");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		}
+
 		super.validateSpam(object);
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-		List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
-		if (!marks.isEmpty()) {
-			Mark mark = marks.get(0);
-			object.setMark(mark);
-		}
+		Mark mark = this.repository.findCodeAuditMark(object.getId());
+		object.setMark(mark);
+
 		this.repository.save(object);
 	}
 
