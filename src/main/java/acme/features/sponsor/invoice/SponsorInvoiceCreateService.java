@@ -3,12 +3,12 @@ package acme.features.sponsor.invoice;
 
 import java.util.Date;
 
+import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
@@ -27,15 +27,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Sponsorship sponsorship;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -73,7 +65,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			Invoice existing;
 
 			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated");
+			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
@@ -83,8 +75,10 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isBefore(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-close");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-salary");
+			super.state(Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.invalid-currency");
+		}
 	}
 
 	@Override
@@ -105,12 +99,6 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		dataset.put("draftMode", object.getSponsorship().isDraftMode());
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
 	}
 
 }
