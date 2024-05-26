@@ -36,6 +36,9 @@ public interface DeveloperTrainingSessionRepository extends AbstractRepository {
 	@Query("SELECT s FROM TrainingSession s WHERE s.code = :code")
 	TrainingSession findOneTrainingSessionByCode(String code);
 
+	@Query("select count(p) > 0 from TrainingSession p where p.code = :code and p.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
+
 	@Query("select ts from TrainingSession ts where ts.trainingModule.id = :masterId")
 	Collection<TrainingSession> findManyTrainingSessionsByMasterId(int masterId);
 

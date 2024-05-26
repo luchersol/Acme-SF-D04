@@ -35,5 +35,10 @@ developer.training-session.form.label.link = Link
 developer.training-session.list.button.create = Create
 
 developer.training-session.form.error.duplicated = This reference is not free
-developer.training-session.form.error.notOneWeekAhead = At least one week after the current date.
+developer.training-session.form.error.notOneWeekAhead = At least one week after the creation moment date of the module
 developer.training-session.form.error.notOneWeekLong = It has to have a minimum period of 1 week
+developer.training-session.form.error.timeStart.min = The earliest date you can set is 2000/01/01 00:00
+developer.training-session.form.error.timeStart.max = The latest date you can set is 2200/12/31 23:59
+developer.training-session.form.error.timeEnd.min = The earliest date you can set is 2000/01/01 00:00
+developer.training-session.form.error.timeEnd.max = The latest date you can set is 2200/12/31 23:59
+developer.training-session.form.error.link.size = Must have between 7 and 255 items
