@@ -11,7 +11,7 @@ audit-record-09,code-audit-04,AU-4567-124,2019/04/25 20:16,2019/04/25 22:16,C,nu
 audit-record-10,code-audit-05,AU-4567-125,2020/03/01 00:00,2020/03/01 02:00,F,null,false
 audit-record-11,code-audit-06,AU-4567-126,2021/01/01 00:00,2021/01/01 01:00,A_PLUS,null,false
 audit-record-12,code-audit-07,AU-4567-127,2020/02/05 00:01,2020/02/05 03:01,F_MINUS,null,false
-audit-record-13,code-audit-08,AU-4567-128,2019/04/25 20:20,2019/04/25 22:20,C,http://www.example.com,false
+audit-record-13,code-audit-08,AU-4567-128,2019/04/25 20:20,2019/04/25 22:20,C,http://www.example.com,true
 audit-record-14,code-audit-08,AU-4567-129,2019/04/25 20:21,2019/04/25 22:21,C,https://ev.us.es,false
-audit-record-15,code-audit-08,AU-4567-130,2019/04/25 20:22,2019/04/25 22:22,A_PLUS,null,false
+audit-record-15,code-audit-08,AU-4567-130,2019/04/25 20:22,2019/04/25 22:22,A_PLUS,null,true
 audit-record-16,code-audit-09,AU-4567-131,2019/04/25 20:22,2019/04/25 22:22,F_MINUS,null,true
