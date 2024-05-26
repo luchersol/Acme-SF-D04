@@ -3,6 +3,7 @@ package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,9 +88,11 @@ public class AuditorCodeAuditUpdateService extends AbstractAntiSpamService<Audit
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
-		Mark mark = this.repository.findCodeAuditMark(object.getId());
-		object.setMark(mark);
-
+		List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
+		if (!marks.isEmpty()) {
+			Mark mark = marks.get(0);
+			object.setMark(mark);
+		}
 		this.repository.save(object);
 	}
 

@@ -18,8 +18,8 @@ import acme.roles.Auditor;
 @Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
-	@Query("select ar.mark from AuditRecord ar where ar.codeAudit.id = :id AND ar.draftMode = false GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC LIMIT 1")
-	Mark findCodeAuditMark(int id);
+	@Query("select ar.mark from AuditRecord ar where ar.codeAudit.id = :id AND ar.draftMode = false GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
+	List<Mark> findCodeAuditMark(int id);
 
 	@Query("select ca from CodeAudit ca where ca.code = :code")
 	CodeAudit findCodeAuditWithCode(String code);
