@@ -64,11 +64,11 @@ public class ClientProgressLogListService extends AbstractService<Client, Progre
 
 		int masterId;
 		Contract contract;
-		final boolean showCreate;
+		Boolean showCreate;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findOneContractById(masterId);
-		showCreate = contract.getDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
+		showCreate = super.getRequest().getPrincipal().hasRole(contract.getClient()) && contract.getDraftMode();
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);

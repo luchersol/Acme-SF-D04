@@ -1,7 +1,7 @@
 key,key:project,key:client,code,instantiation-moment,provider-name,customer-name,goal,budget,draft-mode
-contract-01,project-01,client-01,C-439,2020/03/10 10:40,r,Juán,ser claro,EUR 15000.23,false
+contract-01,project-01,client-01,C-439,2020/03/10 10:40,r,Juán,ser claro,EUR 15000.23,true
 contract-02,project-02,client-01,RR-043,2019/05/30 23:40,ABCDEFGHIJKLMNO-123ABCDEFGHIJKLMNO-123ABCDEFGHIJKLMNO-123ABCDEFGHIJKLMNO-DW,c4t4l1n4,l,USD 30930,false
-contract-03,project-03,client-01,TGU-111,2016/02/29 23:59,corazón,dfklflerpwefpfkqeffmdlmfrknegofkdnsofnkndfgodnldfksdopmkldmlkdfmgodgngkldsr,4pr0b4r,GBP 1000.23,false
-contract-04,project-04,client-01,AP-481,2018/12/31 23:59,სიყვარული,어록,te%mer,EUR 2000000,false
+contract-03,project-04,client-01,TGU-111,2016/02/29 23:59,corazón,dfklflerpwefpfkqeffmdlmfrknegofkdnsofnkndfgodnldfksdopmkldmlkdfmgodgngkldsr,4pr0b4r,GBP 1000.23,false
+contract-04,project-04,client-01,AP-481,2018/12/31 23:59,სიყვარული,어록,te%mer,EUR 2000000,true
 contract-05,project-01,client-01,PPP-252,2010/10/24 00:00,r0m4,m,ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff,GBP 1000,false
-contract-06,project-02,client-02,QOR-252,2010/12/30 14:20,t?do,pedro,fracasar,USD 3000.10,false
+contract-06,project-02,client-02,QOR-252,2010/12/30 14:20,t?do,pedro,fracasar,USD 3000.10,true

@@ -1,6 +1,7 @@
 
 package acme.features.client.contract;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,15 +76,23 @@ public class ClientContractUpdateService extends AbstractAntiSpamService<Client,
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null || existing.getId() == contract.getId(), "code", "client.contract.form.error.code");
+			state = !this.repository.existsOtherByCodeAndId(contract.getCode(), contract.getId());
+			super.state(state, "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(contract.getBudget().getCurrency());
+			super.state(state, "budget", "client.contract.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.ProjectIsDraftMode(contract.getProject().getId());
+			super.state(!isDraftMode, "project", "client.contract.form.error.project");
 		}
 
 		super.validateSpam(contract);
@@ -107,9 +116,9 @@ public class ClientContractUpdateService extends AbstractAntiSpamService<Client,
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choicesProject = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choicesProject = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
-		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
+		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());

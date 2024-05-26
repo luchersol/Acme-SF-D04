@@ -99,7 +99,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choices = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choices = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());

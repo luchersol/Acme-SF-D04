@@ -39,3 +39,4 @@ client.contract.form.error.code = The code is already taken
 client.contract.form.error.publish = You cannot publish without associated progress log
 client.contract.form.error.allpublish = Associated  progress log not publish
 client.contract.form.error.budgetExcedCostProject = Budget exceeds project cost
+client.contract.form.error.invalid-currency = The currency must be in the system configuration
