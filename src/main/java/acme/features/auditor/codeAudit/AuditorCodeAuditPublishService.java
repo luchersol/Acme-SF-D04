@@ -3,6 +3,7 @@ package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,8 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 			super.state(ca == null || ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+			List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
+			Mark mark = marks.isEmpty() ? null : marks.get(0);
 			Boolean isPosibleMark = mark != null && mark.toString() != "F_MINUS" && mark.toString() != "F";
 			super.state(isPosibleMark, "mark", "auditor.codeAudit.form.error.invalidMarkForPublish");
 			object.setMark(mark);
@@ -101,7 +103,8 @@ public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Audi
 	public void perform(final CodeAudit object) {
 		assert object != null;
 		object.setDraftMode(false);
-		Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+		List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
+		Mark mark = marks.isEmpty() ? null : marks.get(0);
 		object.setMark(mark);
 		this.repository.save(object);
 	}
