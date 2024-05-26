@@ -15,10 +15,12 @@ risk.form.label.reference = Referencia:
 risk.form.label.identificationDate = Fecha de Identificación:
 risk.form.label.impact = Impacto:
 risk.form.label.probability = Probabilidad:
+risk.form.label.riskFactor = Factor de Riesgo:
 risk.form.label.description = Descripción:
 risk.form.label.link = Enlace: (Opcional)
 risk.form.label.project = Proyecto:
 
 risk.list.label.reference = Referencia
 risk.list.label.identificationDate = Fecha de Identificación
-risk.list.label.description = Descripción
+risk.list.label.impact = Probabilidad
+risk.list.label.probability = Probabilidad

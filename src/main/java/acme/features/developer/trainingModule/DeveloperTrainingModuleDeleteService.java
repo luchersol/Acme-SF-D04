@@ -75,11 +75,6 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-
-		// Validate updateMoment
-		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
-
 	}
 
 	@Override

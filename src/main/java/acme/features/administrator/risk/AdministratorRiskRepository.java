@@ -35,4 +35,7 @@ public interface AdministratorRiskRepository extends AbstractRepository {
 	@Query("SELECT r FROM Risk r WHERE r.administrator.userAccount.id = :administratorId")
 	Collection<Risk> findRisksByAdministratorId(int administratorId);
 
+	@Query("select count(p) > 0 from Risk p where p.reference = :reference and p.id != :id")
+	Boolean existsOtherByCodeAndId(String reference, int id);
+
 }

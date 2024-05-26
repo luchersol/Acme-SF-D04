@@ -50,10 +50,16 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("SELECT p FROM Project p WHERE p.id = :id")
 	Project findOneProjectById(int id);
 
+	@Query("SELECT count(p) > 0 FROM Project p WHERE p.id = :id and p.draftMode = true")
+	Boolean ProjectIsDraftMode(int id);
+
 	@Query("SELECT t FROM TrainingModule t WHERE t.developer.userAccount.id = :developerId")
 	Collection<TrainingModule> findTrainingsByDeveloperId(int developerId);
 
 	@Query("SELECT t FROM TrainingModule t where t.developer.userAccount.id = :developerId and t.draftMode = false")
 	Collection<TrainingModule> findPublishedTrainings(int developerId);
+
+	@Query("select count(p) > 0 from TrainingModule p where p.code = :code and p.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
 
 }
