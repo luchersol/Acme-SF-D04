@@ -50,8 +50,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractAntiSpamServ
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-
-		super.bind(object, "code", "timeStart", "timeEnd", "location", "instructor", "contactEmail", "link");
 	}
 
 	@Override
