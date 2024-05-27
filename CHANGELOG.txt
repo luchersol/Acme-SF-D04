@@ -11,3 +11,5 @@
 ** Year 2024
 
 24.1.0	This is the first version of Acme-SF 24.1
+
+24.4.0  This is the final version of Acme-SF 24.4
