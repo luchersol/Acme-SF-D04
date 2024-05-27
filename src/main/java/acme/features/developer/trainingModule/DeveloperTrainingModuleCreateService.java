@@ -80,7 +80,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractAntiSpamServic
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-		Project project;
+
 		// Validate code
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existing;

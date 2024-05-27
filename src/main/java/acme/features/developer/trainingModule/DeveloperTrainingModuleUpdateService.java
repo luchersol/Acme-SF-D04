@@ -80,7 +80,6 @@ public class DeveloperTrainingModuleUpdateService extends AbstractAntiSpamServic
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		Project project;
 		// Validate updateMoment
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			boolean state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
