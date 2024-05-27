@@ -15,11 +15,13 @@ risk.form.label.reference = Reference:
 risk.form.label.identificationDate = Identification Date:
 risk.form.label.impact = Impact:
 risk.form.label.probability = Probability:
+risk.form.label.riskFactor = Risk Factor:
 risk.form.label.description = Description:
 risk.form.label.link = Link: (Optional)
 risk.form.label.project = Project:
 
 risk.list.label.reference = Reference
 risk.list.label.identificationDate = Identification Date
-risk.list.label.description = Description
+risk.list.label.impact = Impact
+risk.list.label.probability = Probability
 

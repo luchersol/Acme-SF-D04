@@ -19,11 +19,11 @@ import acme.client.data.accounts.Authenticated;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.roles.Manager;
 
 @Service
-public class AuthenticatedManagerUpdateService extends AbstractService<Authenticated, Manager> {
+public class AuthenticatedManagerUpdateService extends AbstractAntiSpamService<Authenticated, Manager> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -61,6 +61,7 @@ public class AuthenticatedManagerUpdateService extends AbstractService<Authentic
 	@Override
 	public void validate(final Manager object) {
 		assert object != null;
+		super.validateSpam(object);
 	}
 
 	@Override

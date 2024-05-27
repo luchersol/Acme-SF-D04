@@ -18,7 +18,7 @@ manager.user-story.form.label.title = Title
 manager.user-story.form.label.description = Description
 manager.user-story.form.label.estimated-cost = Estimated Cost
 manager.user-story.form.label.acceptance-criteria = Acceptance Criteria
-manager.user-story.form.label.link = Link
+manager.user-story.form.label.link = Link (Optional)
 manager.user-story.form.label.priority = Priority
 
 manager.user-story.list-mine.button.create = Create

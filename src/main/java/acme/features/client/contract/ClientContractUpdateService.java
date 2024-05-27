@@ -1,25 +1,31 @@
 
 package acme.features.client.contract;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
+import acme.components.MoneyExchangeService;
 import acme.entities.contract.Contract;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
 @Service
-public class ClientContractUpdateService extends AbstractService<Client, Contract> {
+public class ClientContractUpdateService extends AbstractAntiSpamService<Client, Contract> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -70,16 +76,26 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Contract existing;
-
-			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null || existing.getId() == contract.getId(), "code", "client.contract.form.error.code");
+			state = !this.repository.existsOtherByCodeAndId(contract.getCode(), contract.getId());
+			super.state(state, "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(contract.getBudget().getCurrency());
+			super.state(state, "budget", "client.contract.form.error.invalid-currency");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.ProjectIsDraftMode(contract.getProject().getId());
+			super.state(!isDraftMode, "project", "client.contract.form.error.project");
+		}
+
+		super.validateSpam(contract);
 	}
 
 	@Override
@@ -96,14 +112,17 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		Collection<Project> projectAllPublish;
 		SelectChoices choicesProject;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choicesProject = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choicesProject = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
-		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
+		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.risk.Risk;
 
 @Service
-public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
+public class AdministratorRiskUpdateService extends AbstractAntiSpamService<Administrator, Risk> {
 
 	@Autowired
 	private AdministratorRiskRepository repository;
@@ -42,6 +42,16 @@ public class AdministratorRiskUpdateService extends AbstractService<Administrato
 	@Override
 	public void validate(final Risk object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			boolean state = !this.repository.existsOtherByCodeAndId(object.getReference(), object.getId());
+			super.state(state, "reference", "administrator.risk.form.error.duplicated");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("link") && !object.getLink().isEmpty()) {
+			// Validate link length
+			int linkLength = object.getLink().length();
+			super.state(linkLength >= 7 && linkLength <= 255, "link", "administrator.risk.form.error.link.size");
+		}
+		super.validateSpam(object);
 	}
 
 	@Override

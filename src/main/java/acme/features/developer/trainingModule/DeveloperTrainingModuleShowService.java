@@ -42,7 +42,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		moduleId = super.getRequest().getData("id", int.class);
 		module = this.repository.findOneTrainingById(moduleId);
 		developer = module == null ? null : module.getDeveloper();
-		status = developer.getId() == super.getRequest().getPrincipal().getActiveRoleId() && module != null && super.getRequest().getPrincipal().hasRole(developer);
+		status = module != null && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -16,9 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="client.contract.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="client.contract.list.label.providerName" path="providerName" width="10%"/>
-	<acme:list-column code="client.contract.list.label.customerName" path="customerName" width="70%"/>
+	<acme:list-column code="client.contract.list.label.code" path="code"/>
+	<acme:list-column code="client.contract.list.label.providerName" path="providerName"/>
+	<acme:list-column code="client.contract.list.label.customerName" path="customerName"/>
 </acme:list>
 
 <acme:button code="client.contract.list.button.create" action="/client/contract/create"/>

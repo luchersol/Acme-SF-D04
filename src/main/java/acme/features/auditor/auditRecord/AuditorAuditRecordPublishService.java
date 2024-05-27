@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditRecord;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
+public class AuditorAuditRecordPublishService extends AbstractAntiSpamService<Auditor, AuditRecord> {
 
 	@Autowired
 	private AuditorAuditRecordRepository repository;
@@ -60,22 +60,22 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			AuditRecord ar = this.repository.findAuditRecordByCode(object.getCode());
-			Boolean repeatedCode = ar == null || ar != null && object.getId() == ar.getId();
+			Boolean repeatedCode = ar == null || object.getId() == ar.getId();
 			super.state(repeatedCode, "code", "auditor.auditRecord.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
-			boolean notNull = object.getStartDate() != null && object.getCodeAudit().getExecution() != null;
+			boolean notNull = object.getCodeAudit().getExecution() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getStartDate(), object.getCodeAudit().getExecution());
 			super.state(timeConcordance, "startDate", "auditor.auditRecord.form.error.badStartDate");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			boolean notNull = object.getEndDate() != null && object.getStartDate() != null;
+			boolean notNull = object.getStartDate() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getEndDate(), object.getStartDate());
 			super.state(timeConcordance, "endDate", "auditor.auditRecord.form.error.badTimeConcordance");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			boolean notNull = object.getEndDate() != null && object.getStartDate() != null;
+			boolean notNull = object.getStartDate() != null;
 			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getEndDate(), object.getStartDate(), 1, ChronoUnit.HOURS);
 			super.state(goodDuration, "endDate", "auditor.auditRecord.form.error.notEnoughDuration");
 		}
@@ -86,6 +86,8 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 			boolean codeAuditIsYours = ca.getAuditor().getId() == a.getId();
 			super.state(codeAuditIsYours && ca.getDraftMode(), "codeAudit", "auditor.auditRecord.form.error.codeAudit");
 		}
+
+		super.validateSpam(object);
 
 	}
 

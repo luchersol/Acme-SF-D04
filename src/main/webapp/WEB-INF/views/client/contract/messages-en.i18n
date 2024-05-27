@@ -18,6 +18,8 @@ client.contract.form.label.providerName = Provider Name:
 client.contract.form.label.customerName = Customer Name:
 client.contract.form.label.goal = Goal:
 client.contract.form.label.budget = Budget:
+client.contract.form.label.budget-exchange = Budget with system currency:
+
 
 client.contract.form.button.progress-log = Progress Log
 
@@ -37,3 +39,4 @@ client.contract.form.error.code = The code is already taken
 client.contract.form.error.publish = You cannot publish without associated progress log
 client.contract.form.error.allpublish = Associated  progress log not publish
 client.contract.form.error.budgetExcedCostProject = Budget exceeds project cost
+client.contract.form.error.invalid-currency = The currency must be in the system configuration

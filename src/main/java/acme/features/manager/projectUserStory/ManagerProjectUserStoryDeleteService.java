@@ -54,8 +54,13 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 
 	@Override
 	public void perform(final ProjectUserStory object) {
+		Collection<ProjectUserStory> relationToDelete;
+		int projectId, userStoryId;
 
-		this.repository.delete(object);
+		projectId = object.getProject().getId();
+		userStoryId = object.getUserStory().getId();
+		relationToDelete = this.repository.findRelationByProjectIdAndUserStoryId(projectId, userStoryId);
+		this.repository.deleteAll(relationToDelete);
 	}
 
 	@Override

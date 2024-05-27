@@ -9,11 +9,11 @@ import acme.client.data.accounts.Principal;
 import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedSponsorCreateService extends AbstractService<Authenticated, Sponsor> {
+public class AuthenticatedSponsorCreateService extends AbstractAntiSpamService<Authenticated, Sponsor> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -59,6 +59,7 @@ public class AuthenticatedSponsorCreateService extends AbstractService<Authentic
 	@Override
 	public void validate(final Sponsor object) {
 		assert object != null;
+		super.validateSpam(object);
 	}
 
 	@Override

@@ -18,6 +18,7 @@ any.contract.form.label.providerName = Nombre del proveedor
 any.contract.form.label.customerName = Nombre del cliente
 any.contract.form.label.goal = Objetivo
 any.contract.form.label.budget = Presupuesto
+any.contract.form.label.budget-exchange = Presupuesto con divisa del sistema
 
 any.contract.form.button.progress-log = Registros de progreso
 

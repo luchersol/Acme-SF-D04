@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.banner.Banner;
 
 @Service
-public class AdministratorBannerUpdateService extends AbstractService<Administrator, Banner> {
+public class AdministratorBannerUpdateService extends AbstractAntiSpamService<Administrator, Banner> {
 
 	@Autowired
 	private AdministratorBannerRepository repository;
@@ -51,23 +51,23 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("displayStart")) {
-			boolean notNull = object.getDisplayStart() != null && object.getInstanciationOrUpdateMoment() != null;
+			boolean notNull = object.getInstanciationOrUpdateMoment() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getDisplayStart(), object.getInstanciationOrUpdateMoment());
 			super.state(timeConcordance, "displayStart", "administrator.banner.form.error.badDisplayStartConcordance");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("displayEnd")) {
-			boolean notNull = object.getDisplayEnd() != null && object.getDisplayStart() != null;
+			boolean notNull = object.getDisplayStart() != null;
 			Boolean timeConcordance = notNull && MomentHelper.isAfter(object.getDisplayEnd(), object.getDisplayStart());
 			super.state(timeConcordance, "displayEnd", "administrator.banner.form.error.badTimeConcordance");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("displayEnd")) {
-			boolean notNull = object.getDisplayEnd() != null && object.getDisplayStart() != null;
-			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getDisplayEnd(), object.getDisplayStart(), 1, ChronoUnit.WEEKS);
+			boolean notNull = object.getDisplayStart() != null;
+			Boolean goodDuration = notNull && MomentHelper.isLongEnough(object.getDisplayEnd(), object.getDisplayStart(), 7, ChronoUnit.DAYS);
 			super.state(goodDuration, "displayEnd", "administrator.banner.form.error.notEnoughDuration");
 		}
-
+		super.validateSpam(object);
 	}
 
 	@Override

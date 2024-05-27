@@ -5,16 +5,19 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -28,6 +31,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code"), @Index(columnList = "code, id"), @Index(columnList = "developer_id, draftMode"), @Index(columnList = "id, draftMode"), @Index(columnList = "developer_id, updateMoment")
+})
+
 public class TrainingModule extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -39,7 +46,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	@Past
+	@PastOrPresent
 	private Date				creationMoment;
 
 	@NotBlank
@@ -50,14 +57,15 @@ public class TrainingModule extends AbstractEntity {
 	private DifficultyLevel		difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	private Date				updateMoment;
 
 	@URL
 	private String				link;
 
 	@NotNull
-	@PositiveOrZero
+	@DecimalMin(value = "0.0", inclusive = true)
+	@DecimalMax(value = "100.0", inclusive = true)
 	private Double				estimatedTotalTime;
 
 	@NotNull

@@ -8,11 +8,11 @@ import acme.client.data.accounts.Authenticated;
 import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.roles.Auditor;
 
 @Service
-public class AuthenticatedAuditorUpdateService extends AbstractService<Authenticated, Auditor> {
+public class AuthenticatedAuditorUpdateService extends AbstractAntiSpamService<Authenticated, Auditor> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -54,6 +54,7 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 	@Override
 	public void validate(final Auditor object) {
 		assert object != null;
+		super.validateSpam(object);
 	}
 
 	@Override

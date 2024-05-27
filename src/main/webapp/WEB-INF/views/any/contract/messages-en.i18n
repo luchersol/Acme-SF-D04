@@ -9,9 +9,9 @@ any.contract.form.label.providerName = Provider Name
 any.contract.form.label.customerName = Customer Name
 any.contract.form.label.goal = Goal
 any.contract.form.label.budget = Budget
+any.contract.form.label.budget-exchange = Budget with system currency
 
 any.contract.form.button.progress-log = Progress Log
-
 
 any.contract.list.label.code = Code
 any.contract.list.label.providerName = Provider Name

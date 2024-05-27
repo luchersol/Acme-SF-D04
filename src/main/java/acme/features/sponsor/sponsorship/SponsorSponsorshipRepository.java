@@ -11,6 +11,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Sponsor;
 
 @Repository
@@ -43,6 +44,15 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select s from Sponsorship s where s.code = :code")
 	Sponsorship findOneSponsorshipByCode(String code);
 
-	@Query("select sc.systemCurrency from SystemConfiguration sc")
-	Collection<String> findSystemCurrency();
+	@Query("select sys from SystemConfiguration sys")
+	SystemConfiguration findSystemConfiguration();
+
+	@Query("select mr.rate from MoneyRate mr where mr.currency = :currency")
+	Double findMoneyRateByMoneyCurrency(String currency);
+
+	@Query("select count(i) = 0 from Invoice i where i.draftMode = true and i.sponsorship.id = :id")
+	Boolean allInvoicesPublishedBySponsorshipId(int id);
+
+	@Query("select count(s) = 0 from Sponsorship s where s.code = :code and s.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
 }

@@ -20,15 +20,15 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.project.Project;
 import acme.entities.training.DifficultyLevel;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModulePublishService extends AbstractAntiSpamService<Developer, TrainingModule> {
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
@@ -64,28 +64,17 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
-
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
-		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		// Validate updateMoment
-		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
-
-		// Validate Training Modules with Training Session
 		super.state(!this.repository.findManyTrainingSessionsByMasterId(object.getId()).isEmpty(), "code", "developer.training-module.form.error.publish");
 		boolean allSessionsInDraftMode = this.repository.areAllTrainingSessionsPublished(object.getId());
 		super.state(allSessionsInDraftMode, "code", "developer.training-module.form.error.allpublish");
+
+		super.validateSpam(object);
 	}
 
 	@Override
@@ -109,11 +98,11 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		projects = this.repository.findAllProjectPublish();
 
-		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");
-		dataset.put("project", choicesProject.getSelected().getKey());
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
+		dataset.put("project", object.getProject());
 		dataset.put("projects", choicesProject);
 		dataset.put("difficultyLevel", choicesDifficulty.getSelected().getKey());
 		dataset.put("difficultyLevels", choicesDifficulty);

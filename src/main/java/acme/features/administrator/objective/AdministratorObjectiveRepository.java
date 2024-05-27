@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.repositories.AbstractRepository;
-import acme.entities.objective.Objective;
+import acme.entities.objective.Objective;;
 
 @Repository
 public interface AdministratorObjectiveRepository extends AbstractRepository {

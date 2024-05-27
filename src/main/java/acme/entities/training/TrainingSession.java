@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -13,6 +15,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -24,6 +27,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code"), @Index(columnList = "code, id")
+})
 public class TrainingSession extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -33,9 +39,11 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				timeStart;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				timeEnd;
 
@@ -49,12 +57,14 @@ public class TrainingSession extends AbstractEntity {
 
 	@NotBlank
 	@Email
+	@Size(min = 6, max = 254)
 	private String				contactEmail;
 
 	@URL
 	private String				link;
 
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 

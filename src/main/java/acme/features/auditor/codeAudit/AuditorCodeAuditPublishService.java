@@ -2,13 +2,16 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.client.helpers.MomentHelper;
 import acme.client.views.SelectChoices;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
@@ -16,7 +19,7 @@ import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditPublishService extends AbstractAntiSpamService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -67,10 +70,11 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		CodeAudit ca = this.repository.findCodeAuditWithCode(object.getCode());
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
+			super.state(ca == null || ca.getId() == object.getId(), "code", "auditor.codeAudit.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+			List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
+			Mark mark = marks.isEmpty() ? null : marks.get(0);
 			Boolean isPosibleMark = mark != null && mark.toString() != "F_MINUS" && mark.toString() != "F";
 			super.state(isPosibleMark, "mark", "auditor.codeAudit.form.error.invalidMarkForPublish");
 			object.setMark(mark);
@@ -80,13 +84,27 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			Integer notPublishedAuditRecord = this.repository.countNotPublishedAuditRecordsOfCodeAudit(object.getId());
 			super.state(notPublishedAuditRecord == 0, "mark", "auditor.codeAudit.form.error.notAllAuditRecordArePublished");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("execution")) {
+			Date maximumDate = this.repository.findMaximumValidExecutionDate(object.getId());
+			Boolean validExecution = maximumDate == null || MomentHelper.isAfter(maximumDate, object.getExecution());
+			super.state(validExecution, "execution", "auditor.codeAudit.form.error.badExecution");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Boolean isDraftMode = this.repository.projectIsDraftMode(object.getProject().getId());
+			super.state(isDraftMode != null && !isDraftMode, "project", "auditor.codeAudit.form.error.notPublishedProject");
+		}
+
+		super.validateSpam(object);
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
 		object.setDraftMode(false);
-		Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
+		List<Mark> marks = this.repository.findCodeAuditMark(object.getId());
+		Mark mark = marks.isEmpty() ? null : marks.get(0);
 		object.setMark(mark);
 		this.repository.save(object);
 	}

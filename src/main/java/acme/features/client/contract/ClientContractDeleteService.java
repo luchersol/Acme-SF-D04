@@ -6,9 +6,11 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.components.MoneyExchangeService;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
@@ -20,7 +22,10 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -90,14 +95,17 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 		Collection<Project> projectAllPublish;
 		SelectChoices choices;
 		Dataset dataset;
+		Money moneyExchange;
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choices = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choices = SelectChoices.from(projectAllPublish, "code", contract.getProject());
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		moneyExchange = this.moneyExchange.computeMoneyExchange(contract.getBudget());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getBuffer().addData(dataset);
 

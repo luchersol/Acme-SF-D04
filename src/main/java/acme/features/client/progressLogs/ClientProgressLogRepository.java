@@ -28,4 +28,9 @@ public interface ClientProgressLogRepository extends AbstractRepository {
 	@Query("select pl from ProgressLog pl where pl.recordId = :recordId")
 	ProgressLog findOneProgressLogByRecordId(String recordId);
 
+	@Query("select count(pl) > 0 from ProgressLog pl where pl.recordId = :recordId and pl.id != :id")
+	Boolean existsOtherByCodeAndId(String recordId, int id);
+
+	@Query("select count(pl) > 0 from ProgressLog pl where pl.recordId = :recordId")
+	Boolean existsByCode(String recordId);
 }

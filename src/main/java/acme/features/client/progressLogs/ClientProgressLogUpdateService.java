@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogUpdateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogUpdateService extends AbstractAntiSpamService<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -56,12 +56,13 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void validate(final ProgressLog progressLog) {
 		assert progressLog != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-			ProgressLog existing;
+		boolean state;
 
-			existing = this.repository.findOneProgressLogByRecordId(progressLog.getRecordId());
-			super.state(existing == null || existing.getId() == progressLog.getId(), "recordId", "client.progress-log.form.error.code");
+		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+			state = !this.repository.existsOtherByCodeAndId(progressLog.getRecordId(), progressLog.getId());
+			super.state(state, "recordId", "client.progress-log.form.error.code");
 		}
+		super.validateSpam(progressLog);
 	}
 
 	@Override
@@ -77,9 +78,10 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		dataset.put("masterId", progressLog.getContract().getId());
-		dataset.put("draftMode", progressLog.getContract().getDraftMode());
+
+		super.getResponse().addData(dataset);
 	}
 
 }

@@ -4,10 +4,11 @@ package acme.features.sponsor.invoice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.components.MoneyExchangeService;
 import acme.entities.sponsorship.Invoice;
-import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -16,7 +17,10 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorInvoiceRepository repository;
+	private SponsorInvoiceRepository	repository;
+
+	@Autowired
+	private MoneyExchangeService		moneyExchange;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -25,16 +29,14 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	public void authorise() {
 		boolean status;
 		int incoiceId;
-		Sponsorship sponsorship;
 		Invoice invoice;
 		Sponsor sponsor;
 
 		incoiceId = super.getRequest().getData("id", int.class);
 
 		invoice = this.repository.findOneInvoiceById(incoiceId);
-		sponsorship = this.repository.findOneSponsorshipByIncoiceId(incoiceId);
 		sponsor = invoice == null ? null : invoice.getSponsor();
-		status = sponsorship != null && invoice != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsor));
+		status = invoice != null && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,8 +57,11 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 		assert object != null;
 
 		Dataset dataset;
+		Money moneyExchange;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
+		moneyExchange = this.moneyExchange.computeMoneyExchange(object.getQuantity());
+		dataset.put("moneyExchange", moneyExchange);
 
 		super.getResponse().addData(dataset);
 	}

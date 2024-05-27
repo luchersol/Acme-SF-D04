@@ -18,6 +18,8 @@ client.contract.form.label.providerName = Nombre del proveedor:
 client.contract.form.label.customerName = Nombre del cliente:
 client.contract.form.label.goal = Objetivo:
 client.contract.form.label.budget = Presupuesto:
+client.contract.form.label.budget-exchange = Presupuesto con divisa del sistema:
+
 
 client.contract.form.button.progress-log = Registros de progreso
 client.contract.form.button.create = Crear
@@ -36,3 +38,4 @@ client.contract.form.error.code = El código ya está cogido
 client.contract.form.error.publish = No puedes publicar sin registros asociados
 client.contract.form.error.allpublish = Registros de progreso asociados no publicados 
 client.contract.form.error.budgetExcedCostProject = Presupuesto supera el coste del proyecto
+client.contract.form.error.invalid-currency = La divisa debe estar en la configuración del sistema
